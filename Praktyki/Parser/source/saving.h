@@ -56,7 +56,7 @@ void save_to_xml(string word, string* type, string* scope, vector<string>* commo
 			out_xml << xml_scope;
 			out_xml << xml_synonyms_start;
 			for (int i=0; i<common_syn_weight; i++) {
-				if (i>0 && i<common_syn_weight-1) 
+				if (i>0 && i<common_syn_weight) 
 					out_xml << ", ";
 				xml_synonym = common_syn->at(i);
 				out_xml << xml_synonym;
@@ -73,7 +73,7 @@ void save_to_xml(string word, string* type, string* scope, vector<string>* commo
 			out_xml << xml_scope;
 			out_xml << xml_synonyms_start;
 			for (int i=0; i<syn_weight; i++) {
-				if (i>0 && i<syn_weight-1) 
+				if (i>0 && i<syn_weight) 
 					out_xml << ", ";
 				xml_synonym = syn->at(i);
 				out_xml << xml_synonym;
@@ -121,7 +121,7 @@ void save_to_xml(string word, vector<string>* syn) {
 			out_xml << xml_scope;
 			out_xml << xml_synonyms_start;
 			for (int i=0; i<syn_weight; i++) {
-				if (i>0 && i<syn_weight-1) 
+				if (i>0 && i<syn_weight) 
 					out_xml << ", ";
 				xml_synonym = syn->at(i);
 				out_xml << xml_synonym;
