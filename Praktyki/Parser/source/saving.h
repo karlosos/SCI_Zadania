@@ -138,7 +138,7 @@ void save_to_xml(string word, vector<string>* syn) {
 /// @vector<string>* syn - wskaznik na kontener pozostalych synonimow
 ///
 void save_to_html(string word, string* type, string* scope, vector<string>* common_syn, vector<string>* syn, string file_name){
-	// Output plik index.html, otwieramy w formie dopisywania
+		// Output plik index.html, otwieramy w formie dopisywania
 		std::ofstream out_html;
 		out_html.open("zadanie2.html", std::ios::app);
 
@@ -148,7 +148,7 @@ void save_to_html(string word, string* type, string* scope, vector<string>* comm
 		// Lancuchy xml
 		string html_word_start = "\t <tr id=\"word\"> \n";
 		string html_word_end = "\t </tr> \n";
-		string html_keyword = "\t\t<td id=\"keyword\">" + word + "</keyword> \n";
+		string html_keyword = "\t\t<td id=\"keyword\">" + word + "</td> \n";
 
 
 		//string xml_weight = "\t\t\t<weight> \n" + + "</weight> \n";
@@ -215,7 +215,7 @@ void save_to_html(string word, vector<string>* syn){
 		// Lancuchy xml
 		string html_word_start = "\t <tr id=\"word\"> \n";
 		string html_word_end = "\t </tr> \n";
-		string html_keyword = "\t\t<td id=\"keyword\">" + word + "</keyword> \n";
+		string html_keyword = "\t\t<td id=\"keyword\">" + word + "</td> \n";
 
 
 		//string xml_weight = "\t\t\t<weight> \n" + + "</weight> \n";
@@ -244,5 +244,4 @@ void save_to_html(string word, vector<string>* syn){
 
 		out_html.close();
 }
-
 #endif //SAVING_H
