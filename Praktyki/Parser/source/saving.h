@@ -52,7 +52,8 @@ void save_to_xml(string word, string* type, string* scope, vector<string>* commo
 		if (common_syn_weight > 0) {
 			out_xml << xml_word_start;
 			out_xml << xml_keyword;
-			out_xml << "\t\t\t<weight>" + to_string(common_syn_weight) + "</weight> \n";
+			out_xml << "\t\t\t<weight>80</weight> \n";
+			out_xml << xml_type;
 			out_xml << xml_scope;
 			out_xml << xml_synonyms_start;
 			for (int i=0; i<common_syn_weight; i++) {
@@ -69,7 +70,7 @@ void save_to_xml(string word, string* type, string* scope, vector<string>* commo
 		if (syn_weight > 0) {
 			out_xml << xml_word_start;
 			out_xml << xml_keyword;
-			out_xml << "\t\t\t<weight>" + to_string(syn_weight) + "</weight> \n";
+			out_xml << "\t\t\t<weight>40</weight> \n";
 			out_xml << xml_scope;
 			out_xml << xml_synonyms_start;
 			for (int i=0; i<syn_weight; i++) {
@@ -282,7 +283,7 @@ void save_to_html(string word, string* type, string* scope, vector<string>* comm
 		if (common_syn_weight > 0) {
 			out_html << html_word_start;
 			out_html << html_keyword;
-			out_html << "\t \t <td id=\"weight\">" + to_string(common_syn_weight) + "</td> \n";
+			out_html << "\t \t <td id=\"weight\">80</td> \n";
 			out_html << html_type;
 			out_html << html_scope;
 			out_html << html_synonyms_start;
@@ -300,7 +301,7 @@ void save_to_html(string word, string* type, string* scope, vector<string>* comm
 		if (syn_weight > 0) {
 			out_html << html_word_start;
 			out_html << html_keyword;
-			out_html << "\t \t <td id=\"weight\">" + to_string(syn_weight) + "</td> \n";
+			out_html << "\t \t <td id=\"weight\">40</td> \n";
 			out_html << html_type;
 			out_html << html_scope;
 			out_html << html_synonyms_start;
