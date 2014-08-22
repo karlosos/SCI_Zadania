@@ -71,6 +71,7 @@ void save_to_xml(string word, string* type, string* scope, vector<string>* commo
 			out_xml << xml_word_start;
 			out_xml << xml_keyword;
 			out_xml << "\t\t\t<weight>40</weight> \n";
+			out_xml << xml_type;
 			out_xml << xml_scope;
 			out_xml << xml_synonyms_start;
 			for (int i=0; i<syn_weight; i++) {
