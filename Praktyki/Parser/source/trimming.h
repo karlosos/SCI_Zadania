@@ -301,25 +301,38 @@ void trim_wordnik(string word) {
 				regex pattern_syn( "<span data-definition-for=\"" );
 
 				bool is_scope = false;
+				bool is_syn = false;
+				bool is_eq = false;
 
                 while ( getline (i_file,line))
                 {
 					if(regex_search (line, pattern_end)) {
-						// Zapisywanie do html i xml
-						save_to_xml(word, syn);
-						save_to_html(word, syn);
-
+						if (is_syn) {
+							// Zapisywanie do html i xml
+							save_to_xml(word, syn, 40);
+							save_to_html(word, syn, 40);
+						}
+						else if(is_eq) {
+							save_to_xml(word, syn, 80);
+							save_to_html(word, syn, 80);
+						}
 						// Usuwanie zmiennych ze wskaznikow
 						syn->clear();
 						//delete syn;
 
 						is_scope = false;
+						is_eq = false;
+						is_syn = false;
 					}
 
-					if(regex_search (line, pattern_syn_start) || regex_search (line, pattern_eq_start)) {
+					if(regex_search (line, pattern_syn_start)) {
 						is_scope = true;
-						// Tworzy nowe zmienne dla wskaznikow
+						is_syn = true;
+					}
 
+					if(regex_search (line, pattern_eq_start)) {
+						is_scope = true;
+						is_eq = true;
 					}
 
 					if(is_scope) {

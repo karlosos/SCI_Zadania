@@ -93,12 +93,13 @@ void save_to_xml(string word, string* type, string* scope, vector<string>* commo
 /// @string word - nazwa slowa
 /// @vector<string>* syn - wskaznik na kontener pozostalych synonimow
 ///
-void save_to_xml(string word, vector<string>* syn) {
+void save_to_xml(string word, vector<string>* syn, int weight) {
 		// Output plik index.html, otwieramy w formie dopisywania
 		std::ofstream out_xml;
 		out_xml.open("zadanie1.xml", std::ios::app);
 
 		long double syn_weight = syn->size();
+		long double w_weight = weight;
 
 		// Lancuchy xml
 		string xml_word_start = "\t\t<word> \n";
@@ -118,7 +119,7 @@ void save_to_xml(string word, vector<string>* syn) {
 		if (syn_weight > 0) {
 			out_xml << xml_word_start;
 			out_xml << xml_keyword;
-			out_xml << "\t\t\t<weight>" + to_string(syn_weight) + "</weight> \n";
+			out_xml << "\t\t\t<weight>" + to_string(w_weight) + "</weight> \n";
 			out_xml << xml_scope;
 			out_xml << xml_synonyms_start;
 			for (int i=0; i<syn_weight; i++) {
@@ -325,12 +326,13 @@ void save_to_html(string word, string* type, string* scope, vector<string>* comm
 /// @string word - nazwa slowa
 /// @vector<string>* syn - wskaznik na kontener pozostalych synonimow
 ///
-void save_to_html(string word, vector<string>* syn){
+void save_to_html(string word, vector<string>* syn, int weight){
 	// Output plik index.html, otwieramy w formie dopisywania
 		std::ofstream out_html;
 		out_html.open("zadanie1.html", std::ios::app);
 
 		long double syn_weight = syn->size();
+		long double w_weight = weight;
 
 		// Lancuchy xml
 		string html_word_start = "\t <tr id=\"word\"> \n";
@@ -348,7 +350,7 @@ void save_to_html(string word, vector<string>* syn){
 		if (syn_weight > 0) {
 			out_html << html_word_start;
 			out_html << html_keyword;
-			out_html << "\t \t <td id=\"weight\">" + to_string(syn_weight) + "</td> \n";
+			out_html << "\t \t <td id=\"weight\">" + to_string(w_weight) + "</td> \n";
 			out_html << html_scope;
 			out_html << html_synonyms_start;
 			for (int i=0; i<syn_weight; i++) {
