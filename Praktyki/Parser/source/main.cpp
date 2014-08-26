@@ -4,13 +4,17 @@ std::vector < string > words;
 std::vector < string > wiki_words;
 std::vector < string > scope_words;
 std::vector < string > scope_words_tmp;
+std::vector < string > deep_words;
+std::vector < string > deep_words_tmp;
+
+int nr_podpunktu = 0;
 string log_name;
 
 #include "files.h"
 #include "downloading.h"
 #include "trimming.h"
 #include "saving.h"
-#include "scope_trimming.h"
+#include "scope.h"
 
 int main () {
 		int nr_zadania = 0;
@@ -23,6 +27,11 @@ int main () {
 ///Zadanie 2
 ////////////////////////////////////////////////////
 		if (nr_zadania == 2) {
+
+		do {
+			cout << "Podaj numer pudpunktu: normalne=0 A=1 A+B=2 [1 lub 2]: ";
+			cin >> nr_podpunktu;
+		} while(nr_podpunktu !=1 && nr_podpunktu != 2 && nr_podpunktu !=0);
 			// Tworzy poczatek html
 			create_log(currentDateTime());
 			create_html("zadanie2");
@@ -44,11 +53,20 @@ int main () {
 
 			// Petla pobierajaca synonimy/equivalenty dla danego slowa
 			// generuje html w postaci tabeli words.size();
-			;
 			for(int i = 0; i < 5; i++ ) {
 					// Pobieramy i trimujemy dane slowo
 					download_thesaurus(words[i]);
 					trim_thesaurus(words[i]);
+			}
+
+			if(nr_podpunktu == 2) {
+				sort_deep_words();
+				// Petla pobierajaca synonimy dla danego slowa
+				// generuje html w postaci tabeli deep_words.size();
+				for(int i = 0; i < 5; i++ ) {
+					download_thesaurus(deep_words[i]);
+					trim_thesaurus(deep_words[i], 0);
+				}
 			}
 
 			// Domykamy pliki

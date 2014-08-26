@@ -37,10 +37,6 @@ void save_to_xml(string word, string* type, string* scope, vector<string>* commo
 		string xml_word_end = "\t\t</word> \n";
 		string xml_keyword = "\t\t\t<keyword>" + word + "</keyword> \n";
 
-		//string xml_syn_weight = to_string(syn_weight);
-		//string xml_common_syn_weight = to_string(common_syn_weight);
-
-		//string xml_weight = "\t\t\t<weight> \n" + + "</weight> \n";
 		string xml_type = "\t\t\t<type>" + *type + "</type> \n";
 
 		string xml_scope = "\t\t\t<scope>" + *scope + "</scope> \n";
@@ -107,11 +103,6 @@ void save_to_xml(string word, vector<string>* syn, int weight) {
 		string xml_word_end = "\t\t</word> \n";
 		string xml_keyword = "\t\t\t<keyword>" + word + "</keyword> \n";
 
-		//string xml_syn_weight = to_string(syn_weight);
-		//string xml_common_syn_weight = to_string(common_syn_weight);
-
-		//string xml_weight = "\t\t\t<weight> \n" + + "</weight> \n";
-
 		string xml_scope = "\t\t\t<scope>" + word + "</scope> \n";
 		string xml_synonyms_start = "\t\t\t<synonyms>";
 		string xml_synonyms_end = "</synonyms> \n";
@@ -137,119 +128,6 @@ void save_to_xml(string word, vector<string>* syn, int weight) {
 		out_xml.close();
 }
 
-/////
-///// Zapisuje dane do xml
-/////
-///// @string word - nazwa slowa
-///// @string* type - wskaznik na typ
-///// @string* scope - wskaznik na scope
-///// @vector<string>* common_syn - wskaznik na kontener common synonimow
-///// @vector<string>* syn - wskaznik na kontener pozostalych synonimow
-/////
-//void save_to_xml(string word, string* type, string* scope, vector<string>* common_syn, vector<string>* syn, string file_name) {
-//		// Output plik index.html, otwieramy w formie dopisywania
-//		std::ofstream out_xml;
-//		out_xml.open("zadanie2.xml", std::ios::app);
-//
-//		long double syn_weight = syn->size();
-//		long double common_syn_weight = common_syn->size();
-//
-//		// Lancuchy xml
-//		string xml_word_start = "\t\t<word> \n";
-//		string xml_word_end = "\t\t</word> \n";
-//		string xml_keyword = "\t\t\t<keyword>" + word + "</keyword> \n";
-//
-//		//string xml_syn_weight = to_string(syn_weight);
-//		//string xml_common_syn_weight = to_string(common_syn_weight);
-//
-//		//string xml_weight = "\t\t\t<weight> \n" + + "</weight> \n";
-//		string xml_type = "\t\t\t<type>" + *type + "</type> \n";
-//
-//		string xml_scope = "\t\t\t<scope>" + *scope + "</scope> \n";
-//		string xml_synonyms_start = "\t\t\t<synonyms> \n";
-//		string xml_synonyms_end = "\t\t\t</synonyms> \n";
-//		string xml_synonym = "";
-//
-//		// Zapisywanie kodu xml
-//		if (common_syn_weight > 0) {
-//			out_xml << xml_word_start;
-//			out_xml << xml_keyword;
-//			out_xml << "\t\t\t<weight>" + to_string(common_syn_weight) + "</weight> \n";
-//			out_xml << xml_scope;
-//			out_xml << xml_synonyms_start;
-//			for (int i=0; i<common_syn_weight; i++) {
-//				xml_synonym = "\t\t\t\t<synonym>" +  common_syn->at(i) + "</synonym> \n";
-//				out_xml << xml_synonym;
-//				xml_synonym = "";
-//			}
-//			out_xml << xml_synonyms_end;
-//			out_xml << xml_word_end;
-//		}
-//
-//		if (syn_weight > 0) {
-//			out_xml << xml_word_start;
-//			out_xml << xml_keyword;
-//			out_xml << "\t\t\t<weight>" + to_string(syn_weight) + "</weight> \n";
-//			out_xml << xml_scope;
-//			out_xml << xml_synonyms_start;
-//			for (int i=0; i<syn_weight; i++) {
-//				xml_synonym = "\t\t\t\t<synonym>" +  syn->at(i) + "</synonym> \n";
-//				out_xml << xml_synonym;
-//				xml_synonym = "";
-//			}
-//			out_xml << xml_synonyms_end;
-//			out_xml << xml_word_end;
-//		}
-//
-//		out_xml.close();
-//}
-//
-/////
-///// Zapisuje dane do xml
-/////
-///// @string word - nazwa slowa
-///// @vector<string>* syn - wskaznik na kontener pozostalych synonimow
-/////
-//void save_to_xml(string word, vector<string>* syn) {
-//		// Output plik index.html, otwieramy w formie dopisywania
-//		std::ofstream out_xml;
-//		out_xml.open("zadanie1.xml", std::ios::app);
-//
-//		long double syn_weight = syn->size();
-//
-//		// Lancuchy xml
-//		string xml_word_start = "\t\t<word> \n";
-//		string xml_word_end = "\t\t</word> \n";
-//		string xml_keyword = "\t\t\t<keyword>" + word + "</keyword> \n";
-//
-//		//string xml_syn_weight = to_string(syn_weight);
-//		//string xml_common_syn_weight = to_string(common_syn_weight);
-//
-//		//string xml_weight = "\t\t\t<weight> \n" + + "</weight> \n";
-//
-//		string xml_scope = "\t\t\t<scope>" + word + "</scope> \n";
-//		string xml_synonyms_start = "\t\t\t<synonyms> \n";
-//		string xml_synonyms_end = "\t\t\t</synonyms> \n";
-//		string xml_synonym = "";
-//
-//		if (syn_weight > 0) {
-//			out_xml << xml_word_start;
-//			out_xml << xml_keyword;
-//			out_xml << "\t\t\t<weight>" + to_string(syn_weight) + "</weight> \n";
-//			out_xml << xml_scope;
-//			out_xml << xml_synonyms_start;
-//			for (int i=0; i<syn_weight; i++) {
-//				xml_synonym = "\t\t\t\t<synonym>" +  syn->at(i) + "</synonym> \n";
-//				out_xml << xml_synonym;
-//				xml_synonym = "";
-//			}
-//			out_xml << xml_synonyms_end;
-//			out_xml << xml_word_end;
-//		}
-//
-//		out_xml.close();
-//}
-
 ///
 /// Zapisuje dane do xml
 ///
@@ -259,7 +137,7 @@ void save_to_xml(string word, vector<string>* syn, int weight) {
 /// @vector<string>* common_syn - wskaznik na kontener common synonimow
 /// @vector<string>* syn - wskaznik na kontener pozostalych synonimow
 ///
-void save_to_html(string word, string* type, string* scope, vector<string>* common_syn, vector<string>* syn, string file_name){
+void save_to_html(string word, string* type, string* scope, vector<string>* common_syn, vector<string>* syn, string file_name, int deep){
 		// Output plik index.html, otwieramy w formie dopisywania
 		std::ofstream out_html;
 		out_html.open("zadanie2.html", std::ios::app);
@@ -269,11 +147,11 @@ void save_to_html(string word, string* type, string* scope, vector<string>* comm
 
 		// Lancuchy xml
 		string html_word_start = "\t <tr id=\"word\"> \n";
+		if (deep == 1)
+			html_word_start = "\t <tr id=\"word\" class=\"deep\"> \n";
 		string html_word_end = "\t </tr> \n";
 		string html_keyword = "\t\t<td id=\"keyword\">" + word + "</td> \n";
 
-
-		//string xml_weight = "\t\t\t<weight> \n" + + "</weight> \n";
 		string html_type = "\t \t <td id=\"type\">" + *type + "</td> \n";
 
 		string html_scope = "\t \t <td id=\"scope\">" + *scope + "</td> \n";
@@ -340,9 +218,6 @@ void save_to_html(string word, vector<string>* syn, int weight){
 		string html_word_end = "\t </tr> \n";
 		string html_keyword = "\t\t<td id=\"keyword\">" + word + "</td> \n";
 
-
-		//string xml_weight = "\t\t\t<weight> \n" + + "</weight> \n";
-
 		string html_scope = "\t \t <td id=\"scope\">" + word + "</td> \n";
 		string html_synonyms_start = "\t \t <td id=\"syn\">";
 		string html_synonyms_end = "</td> \n";
@@ -366,5 +241,71 @@ void save_to_html(string word, vector<string>* syn, int weight){
 		}
 
 		out_html.close();
+}
+
+///
+/// Zapisuje scope do html
+///
+/// @param string word - s³owo które wpisujemy
+/// @param string scope
+///
+void scope_save_html(string word, string scope) {
+	// Output plik index.html, otwieramy w formie dopisywania
+	std::ofstream out_html;
+	out_html.open("zadanie2.html", std::ios::app);
+
+	// Lancuchy xml
+	string html_word_start = "\t <tr id=\"word\"> \n";
+	string html_word_end = "\t </tr> \n";
+	string html_keyword = "\t\t<td id=\"keyword\">" + word + "</td> \n";
+
+	string html_type = "\t \t <td id=\"type\"> noun </td> \n";
+
+	string html_scope = "\t \t <td id=\"scope\">" + scope + "</td> \n";
+	string html_synonyms = "\t \t <td id=\"syn\">" + scope + "</td> \n";
+
+	// Zapisywanie kodu xml
+	out_html << html_word_start;
+	out_html << html_keyword;
+	out_html << "\t \t <td id=\"weight\">100</td> \n";
+	out_html << html_type;
+	out_html << html_scope;
+	out_html << html_synonyms;
+	out_html << html_word_end;
+
+	out_html.close();
+}
+
+///
+/// Zapisuje scope do xml
+///
+/// @param string word - s³owo które wpisujemy
+/// @param string scope
+///
+void scope_save_xml(string word, string scope) {
+		// Output plik index.html, otwieramy w formie dopisywania
+		std::ofstream out_xml;
+		out_xml.open("zadanie2.xml", std::ios::app);
+
+		// Lancuchy xml
+		string xml_word_start = "\t\t<word> \n";
+		string xml_word_end = "\t\t</word> \n";
+		string xml_keyword = "\t\t\t<keyword>" + word + "</keyword> \n";
+
+		string xml_type = "\t\t\t<type>noun</type> \n";
+
+		string xml_scope = "\t\t\t<scope>" + scope + "</scope> \n";
+		string xml_synonyms = "\t\t\t<synonyms>" + scope + "</synonyms> \n";
+
+		// Zapisywanie kodu xml
+		out_xml << xml_word_start;
+		out_xml << xml_keyword;
+		out_xml << "\t\t\t<weight>100</weight> \n";
+		out_xml << xml_type;
+		out_xml << xml_scope;
+		out_xml << xml_synonyms;
+		out_xml << xml_word_end;
+
+		out_xml.close();
 }
 #endif //SAVING_H
