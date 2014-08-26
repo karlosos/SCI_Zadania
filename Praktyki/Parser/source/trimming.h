@@ -299,6 +299,7 @@ void trim_wordnik(string word) {
 				regex pattern_end( "<\/ol>" );
 				regex pattern_eq_start( "equivalents" );
 				regex pattern_syn( "<span data-definition-for=\"" );
+				regex pattern_wikisaurus("See Wikisaurus:");
 
 				bool is_scope = false;
 				bool is_syn = false;
@@ -342,7 +343,13 @@ void trim_wordnik(string word) {
                             std::size_t pos_start = line.find("<span data-definition-for=\"");  
                             std::size_t pos_end = line.find("\">", pos_start+27);
 
-							pos_start += 27;
+							if(regex_search (line, pattern_wikisaurus)) {
+								pos_start = line.find("See Wikisaurus:");  
+								pos_start += 15;
+							} else {
+								pos_start += 27;
+							}
+
 							pos_end;
 
 							std::size_t pos_len = pos_end - pos_start;
