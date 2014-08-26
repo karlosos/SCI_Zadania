@@ -6,11 +6,12 @@
 void scope_trim_white();
 void scope_add(string* scope);
 void scope_save_html(string word, string scope);
+void scope_save_xml(string word, string scope);
 
 void scope_save(string word) {
 	if(scope_words.size() > 0) {
 		for (int i=0; i < scope_words.size(); i++) {
-			
+			scope_save_xml(word, scope_words.at(i));
 			scope_save_html(word, scope_words.at(i));
 		}
 	}
@@ -62,33 +63,69 @@ void scope_add(string* scope) {
         scope_words_tmp.push_back(str.substr(prev_pos, std::string::npos));
 }
 
+
+///
+/// Zapisuje scope
+///
+/// @param string word
+/// @param string scope
+///
 void scope_save_html(string word, string scope) {
 	// Output plik index.html, otwieramy w formie dopisywania
-		std::ofstream out_html;
-		out_html.open("zadanie2.html", std::ios::app);
+	std::ofstream out_html;
+	out_html.open("zadanie2.html", std::ios::app);
+
+	// Lancuchy xml
+	string html_word_start = "\t <tr id=\"word\"> \n";
+	string html_word_end = "\t </tr> \n";
+	string html_keyword = "\t\t<td id=\"keyword\">" + word + "</td> \n";
+
+
+	//string xml_weight = "\t\t\t<weight> \n" + + "</weight> \n";
+	string html_type = "\t \t <td id=\"type\"> noun </td> \n";
+
+	string html_scope = "\t \t <td id=\"scope\">" + scope + "</td> \n";
+	string html_synonyms = "\t \t <td id=\"syn\">" + scope + "</td> \n";
+
+	// Zapisywanie kodu xml
+	out_html << html_word_start;
+	out_html << html_keyword;
+	out_html << "\t \t <td id=\"weight\">100</td> \n";
+	out_html << html_type;
+	out_html << html_scope;
+	out_html << html_synonyms;
+	out_html << html_word_end;
+
+	out_html.close();
+}
+
+void scope_save_xml(string word, string scope) {
+		// Output plik index.html, otwieramy w formie dopisywania
+		std::ofstream out_xml;
+		out_xml.open("zadanie2.xml", std::ios::app);
 
 		// Lancuchy xml
-		string html_word_start = "\t <tr id=\"word\"> \n";
-		string html_word_end = "\t </tr> \n";
-		string html_keyword = "\t\t<td id=\"keyword\">" + word + "</td> \n";
+		string xml_word_start = "\t\t<word> \n";
+		string xml_word_end = "\t\t</word> \n";
+		string xml_keyword = "\t\t\t<keyword>" + word + "</keyword> \n";
 
 
 		//string xml_weight = "\t\t\t<weight> \n" + + "</weight> \n";
-		string html_type = "\t \t <td id=\"type\"> noun </td> \n";
+		string xml_type = "\t\t\t<type>noun</type> \n";
 
-		string html_scope = "\t \t <td id=\"scope\">" + scope + "</td> \n";
-		string html_synonyms = "\t \t <td id=\"syn\">" + scope + "</td> \n";
+		string xml_scope = "\t\t\t<scope>" + scope + "</scope> \n";
+		string xml_synonyms = "\t\t\t<synonyms>" + scope + "</synonyms> \n";
 
 		// Zapisywanie kodu xml
-		out_html << html_word_start;
-		out_html << html_keyword;
-		out_html << "\t \t <td id=\"weight\">100</td> \n";
-		out_html << html_type;
-		out_html << html_scope;
-		out_html << html_synonyms;
-		out_html << html_word_end;
+		out_xml << xml_word_start;
+		out_xml << xml_keyword;
+		out_xml << "\t\t\t<weight>100</weight> \n";
+		out_xml << xml_type;
+		out_xml << xml_scope;
+		out_xml << xml_synonyms;
+		out_xml << xml_word_end;
 
-		out_html.close();
+		out_xml.close();
 }
 
 #endif //SCOPE_TRIMMING_H
