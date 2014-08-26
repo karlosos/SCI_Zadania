@@ -11,6 +11,8 @@
 #include <regex>
 #include <windows.h> // Sprawdzic
 #include <direct.h>
+//#include <boost/tokenizer.hpp> //
+
 #pragma comment(lib, "urlmon.lib")
 
 using namespace std;
@@ -18,6 +20,8 @@ using namespace std;
 // Zmienne globalne
 extern std::vector < string > words;
 extern std::vector < string > wiki_words;
+extern std::vector < string > scope_words;
+extern std::vector < string > scope_words_tmp;
 extern string log_name;
 
 ///

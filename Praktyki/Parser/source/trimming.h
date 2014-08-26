@@ -2,6 +2,8 @@
 #define TRIMMING_H
 
 #include "saving.h"
+#include "scope_trimming.h"
+
 ///
 /// wydobywa slowa z wordnetcode
 ///
@@ -83,62 +85,6 @@ void trim_wiktionary() {
 }
 
 ///
-/// wydobywa slowa z wordnika
-///
-/// @param string word - slowo ktore szukamy w wordniku
-///
-//void trim_wordnik(string word) {
-//		string line;
-//		// Input file
-//		string i_path = "\wordnik\\" + word + ".txt";
-//        ifstream i_file (i_path);
-//
-//		//Output file for synonyms
-//		string o_path_syn = "t_wordnik\\t_" + word + "_syn.txt";
-//		std::ofstream o_file_syn (o_path_syn, std::ofstream::out);
-//
-//		//Output file for equvalents
-//		string o_path_eq = "t_wordnik\\t_" + word + "_eq.txt";
-//		std::ofstream o_file_eq (o_path_eq, std::ofstream::out);
-//
-//		// Trimming second file
-//        if (i_file.is_open())
-//        {
-//                regex pattern_start_syn( "synonyms" );
-//				regex pattern_start_eq( "equivalents" );
-//				regex pattern_end_syn( "<\/ol>" );
-//				regex pattern_end_eq( "<\/ol>" );
-//				bool match_syn = false;
-//				bool match_eq = false;
-//
-//                while ( getline (i_file,line))
-//                {
-//					// Synonyms
-//					if(regex_search (line, pattern_start_syn))
-//						match_syn = true;
-//					if(regex_search (line, pattern_end_syn))
-//						match_syn = false;
-//					if(match_syn)
-//						o_file_syn << line + "\n";   
-//
-//					// Equivalents
-//					if(regex_search (line, pattern_start_eq))
-//						match_eq = true;
-//					if(regex_search (line, pattern_end_eq))
-//						match_eq = false;
-//					if(match_eq)
-//						o_file_eq << line + "\n";  
-//
-//                }
-//                i_file.close();
-//				o_file_syn.close();
-//        }
-//        else cout << "Unable to open file";
-//
-//		//cout << "Triming wordnik: " << word << endl;
-//}
-
-///
 /// wydobywa slowa z thesaurusa
 ///
 /// @param string word - slowo ktore szukamy w thesaurusie
@@ -169,6 +115,7 @@ void trim_thesaurus(string word) {
 				bool is_scope = false;
 				bool is_synonym = false;
 				bool is_common_synonym = false;
+				bool used = false;
 
                 while ( getline (i_file,line))
                 {
@@ -177,6 +124,11 @@ void trim_thesaurus(string word) {
 						save_to_xml(word, type, scope, common_syn, syn, "zadanie2");
 						save_to_html(word, type, scope, common_syn, syn, "zadanie2");
 
+						if(*type == "noun" && used == false) {
+							// Wysy³anie do trimowania scope
+							scope_add(scope);
+							used = true;
+						}
 						// Usuwanie zmiennych ze wskaznikow
 						delete type;
 						delete scope;
@@ -273,9 +225,12 @@ void trim_thesaurus(string word) {
 			cout << "Unable to open file for word: " << word << endl;
 			save_log("Unable to open file for word: " + word, currentDateTime());
 		}
+
+		scope_trim_white();
+		scope_sort();
+		scope_save(string word);
 }
 
-////////////////////// NOWE
 ///
 /// wydobywa slowa z wordnika
 ///
