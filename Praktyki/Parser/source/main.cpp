@@ -2,12 +2,15 @@
 
 std::vector < string > words;
 std::vector < string > wiki_words;
+std::vector < string > scope_words;
+std::vector < string > scope_words_tmp;
 string log_name;
 
 #include "files.h"
 #include "downloading.h"
 #include "trimming.h"
 #include "saving.h"
+#include "scope_trimming.h"
 
 int main () {
 		int nr_zadania = 0;
@@ -42,7 +45,7 @@ int main () {
 			// Petla pobierajaca synonimy/equivalenty dla danego slowa
 			// generuje html w postaci tabeli words.size();
 			;
-			for(int i = 0; i < words.size(); i++ ) {
+			for(int i = 0; i < 5; i++ ) {
 					// Pobieramy i trimujemy dane slowo
 					download_thesaurus(words[i]);
 					trim_thesaurus(words[i]);

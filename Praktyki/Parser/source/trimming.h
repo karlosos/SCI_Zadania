@@ -228,7 +228,7 @@ void trim_thesaurus(string word) {
 
 		scope_trim_white();
 		scope_sort();
-		scope_save(string word);
+		scope_save(word);
 }
 
 ///
