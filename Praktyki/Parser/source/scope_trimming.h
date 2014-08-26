@@ -5,13 +5,13 @@
 
 void scope_trim_white();
 void scope_add(string* scope);
-void scope_save_to_html(string word, string scope);
+void scope_save_html(string word, string scope);
 
 void scope_save(string word) {
 	if(scope_words.size() > 0) {
-		for (int i=0; i < scope_words_tmp.size(); i++) {
-			scope_save_to_html(word, scope_words.at(i));
-			//save to html
+		for (int i=0; i < scope_words.size(); i++) {
+			
+			scope_save_html(word, scope_words.at(i));
 		}
 	}
 
@@ -61,8 +61,9 @@ void scope_add(string* scope) {
     if (prev_pos< str.length())
         scope_words_tmp.push_back(str.substr(prev_pos, std::string::npos));
 }
-void scope_save_to_html(string word, string scope){
-		// Output plik index.html, otwieramy w formie dopisywania
+
+void scope_save_html(string word, string scope) {
+	// Output plik index.html, otwieramy w formie dopisywania
 		std::ofstream out_html;
 		out_html.open("zadanie2.html", std::ios::app);
 
@@ -79,14 +80,13 @@ void scope_save_to_html(string word, string scope){
 		string html_synonyms = "\t \t <td id=\"syn\">" + scope + "</td> \n";
 
 		// Zapisywanie kodu xml
-		if (common_syn_weight > 0) {
-			out_html << html_word_start;
-			out_html << html_keyword;
-			out_html << "\t \t <td id=\"weight\">80</td> \n";
-			out_html << html_type;
-			out_html << html_scope;
-			out_html << html_synonyms;
-			out_html << html_word_end;
+		out_html << html_word_start;
+		out_html << html_keyword;
+		out_html << "\t \t <td id=\"weight\">100</td> \n";
+		out_html << html_type;
+		out_html << html_scope;
+		out_html << html_synonyms;
+		out_html << html_word_end;
 
 		out_html.close();
 }
