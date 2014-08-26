@@ -124,7 +124,7 @@ void trim_thesaurus(string word) {
 						save_to_xml(word, type, scope, common_syn, syn, "zadanie2");
 						save_to_html(word, type, scope, common_syn, syn, "zadanie2", 0);
 
-						if(*type == "noun" && nr_podpunktu==2) {
+						if(*type == "noun") {
 							for(int i=0; i<syn->size(); i++) {
 								deep_words_tmp.push_back(syn->at(i));
 							}
@@ -133,7 +133,7 @@ void trim_thesaurus(string word) {
 							}
 						}
 
-						if(*type == "noun" && used == false && nr_podpunktu==1 || nr_podpunktu==3) {
+						if(*type == "noun" && used == false && nr_podpunktu==1) {
 							// Wysy³anie do trimowania scope
 							scope_add(scope);
 							used = true;

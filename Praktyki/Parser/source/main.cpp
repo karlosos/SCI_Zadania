@@ -29,9 +29,9 @@ int main () {
 		if (nr_zadania == 2) {
 
 		do {
-			cout << "Podaj numer pudpunktu: normalne=0 A=1 A+B=2 [1 lub 2]: ";
+			cout << "Podaj numer pudpunktu: B=0, A=1 [0 lub 1]: ";
 			cin >> nr_podpunktu;
-		} while(nr_podpunktu !=1 && nr_podpunktu != 2 && nr_podpunktu !=0);
+		} while(nr_podpunktu !=1 && nr_podpunktu !=0);
 			// Tworzy poczatek html
 			create_log(currentDateTime());
 			create_html("zadanie2");
@@ -59,7 +59,6 @@ int main () {
 					trim_thesaurus(words[i]);
 			}
 
-			if(nr_podpunktu == 2) {
 				sort_deep_words();
 				// Petla pobierajaca synonimy dla danego slowa
 				// generuje html w postaci tabeli deep_words.size();
@@ -67,7 +66,6 @@ int main () {
 					download_thesaurus(deep_words[i]);
 					trim_thesaurus(deep_words[i], 0);
 				}
-			}
 
 			// Domykamy pliki
 			close_log(currentDateTime());
