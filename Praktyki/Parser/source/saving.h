@@ -52,7 +52,10 @@ void scope_sort() {
 ///
 /// @string* scope
 ///
-void scope_add(string* scope, string* type) {	
+void scope_add(string* scope, string* type) {
+	scope_words.clear();
+	scope_words_tmp.clear();
+
 	string str = *scope;
 	scope_type = *type;
     std::size_t prev_pos = 0, pos;
@@ -203,6 +206,7 @@ void save_to_xml(string word, vector<string>* syn, int weight) {
 /// @vector<string>* syn - wskaznik na kontener pozostalych synonimow
 ///
 void save_to_html(string word, string* type, string* scope, vector<string>* common_syn, vector<string>* syn, string file_name, int deep){
+	
 		// Output plik index.html, otwieramy w formie dopisywania
 		std::ofstream out_html;
 		out_html.open("zadanie2.html", std::ios::app);
@@ -263,11 +267,17 @@ void save_to_html(string word, string* type, string* scope, vector<string>* comm
 
 		out_html.close();
 
-		scope_add(scope, type);
-		scope_clean();
-		scope_sort();
-		scope_save(word);
-}
+		if (previous_scope != *scope) {
+			previous_scope = *scope;
+			scope_add(scope, type);
+			scope_clean();
+			scope_sort();
+			scope_save(word);
+			scope_words.clear();
+			scope_words_tmp.clear();
+			scope_type = "";
+		}	
+	}
 
 ///
 /// Zapisuje dane do xml

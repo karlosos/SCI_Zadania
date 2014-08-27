@@ -133,11 +133,6 @@ void trim_thesaurus(string word) {
 							}
 						}
 
-						if(used == false && nr_podpunktu==1) {
-							// Wysy³anie do trimowania scope
-							scope_add(scope, type);
-							used = true;
-						}
 						// Usuwanie zmiennych ze wskaznikow
 						delete type;
 						delete scope;
@@ -282,7 +277,6 @@ void trim_thesaurus(string word, int deep) {
 						// Zapisywanie do html i xml
 						save_to_xml(word, type, scope, common_syn, syn, "zadanie2");
 						save_to_html(word, type, scope, common_syn, syn, "zadanie2", 1);
-
 
 						if(*type == "noun") {
 							for(int i=0; i<syn->size(); i++) {

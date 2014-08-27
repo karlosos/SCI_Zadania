@@ -7,6 +7,7 @@ string scope_type;
 std::vector < string > scope_words_tmp;
 std::vector < string > deep_words;
 std::vector < string > deep_words_tmp;
+string previous_scope;
 
 int nr_podpunktu = 0;
 string log_name;
@@ -54,7 +55,7 @@ int main () {
 
 			// Petla pobierajaca synonimy/equivalenty dla danego slowa
 			// generuje html w postaci tabeli words.size();
-			for(int i = 0; i < 5; i++ ) {
+			for(int i = 0; i < words.size(); i++ ) {
 					// Pobieramy i trimujemy dane slowo
 					download_thesaurus(words[i]);
 					trim_thesaurus(words[i]);
@@ -63,7 +64,7 @@ int main () {
 				sort_deep_words();
 				// Petla pobierajaca synonimy dla danego slowa
 				// generuje html w postaci tabeli deep_words.size();
-				for(int i = 0; i < 5; i++ ) {
+				for(int i = 0; i < words.size(); i++ ) {
 					download_thesaurus(deep_words[i]);
 					trim_thesaurus(deep_words[i], 0);
 				}
