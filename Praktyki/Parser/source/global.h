@@ -26,6 +26,7 @@ extern std::vector < string > deep_words;
 extern std::vector < string > scope_words;
 extern std::vector < string > scope_words_tmp;
 extern string log_name;
+extern string scope_type;
 extern int nr_podpunktu;
 
 ///

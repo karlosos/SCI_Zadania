@@ -3,6 +3,7 @@
 std::vector < string > words;
 std::vector < string > wiki_words;
 std::vector < string > scope_words;
+string scope_type;
 std::vector < string > scope_words_tmp;
 std::vector < string > deep_words;
 std::vector < string > deep_words_tmp;

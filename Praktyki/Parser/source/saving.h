@@ -259,7 +259,7 @@ void scope_save_html(string word, string scope) {
 	string html_word_end = "\t </tr> \n";
 	string html_keyword = "\t\t<td id=\"keyword\">" + word + "</td> \n";
 
-	string html_type = "\t \t <td id=\"type\"> noun </td> \n";
+	string html_type = "\t \t <td id=\"type\">"+ scope_type +"</td> \n";
 
 	string html_scope = "\t \t <td id=\"scope\">" + scope + "</td> \n";
 	string html_synonyms = "\t \t <td id=\"syn\">" + scope + "</td> \n";
@@ -292,7 +292,7 @@ void scope_save_xml(string word, string scope) {
 		string xml_word_end = "\t\t</word> \n";
 		string xml_keyword = "\t\t\t<keyword>" + word + "</keyword> \n";
 
-		string xml_type = "\t\t\t<type>noun</type> \n";
+		string xml_type = "\t\t\t<type>"+ scope_type +"</type> \n";
 
 		string xml_scope = "\t\t\t<scope>" + scope + "</scope> \n";
 		string xml_synonyms = "\t\t\t<synonyms>" + scope + "</synonyms> \n";

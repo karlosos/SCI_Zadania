@@ -133,9 +133,9 @@ void trim_thesaurus(string word) {
 							}
 						}
 
-						if(*type == "noun" && used == false && nr_podpunktu==1) {
+						if(used == false && nr_podpunktu==1) {
 							// Wysy³anie do trimowania scope
-							scope_add(scope);
+							scope_add(scope, type);
 							used = true;
 						}
 						// Usuwanie zmiennych ze wskaznikow
@@ -283,7 +283,7 @@ void trim_thesaurus(string word, int deep) {
 						save_to_xml(word, type, scope, common_syn, syn, "zadanie2");
 						save_to_html(word, type, scope, common_syn, syn, "zadanie2", 1);
 
-						if(*type == "noun" && nr_podpunktu==2) {
+						if(*type == "noun") {
 							for(int i=0; i<syn->size(); i++) {
 								deep_words_tmp.push_back(syn->at(i));
 							}
@@ -292,10 +292,13 @@ void trim_thesaurus(string word, int deep) {
 							}
 						}
 
-						if(*type == "noun" && used == false && nr_podpunktu==1) {
+						if(nr_podpunktu==1) {
 							// Wysy³anie do trimowania scope
-							scope_add(scope);
-							used = true;
+							scope_add(scope, type);
+
+							scope_clean();
+							scope_sort();
+							scope_save(word);
 						}
 						// Usuwanie zmiennych ze wskaznikow
 						delete type;

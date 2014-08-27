@@ -18,6 +18,7 @@ void scope_save(string word) {
 
 	scope_words.clear();
 	scope_words_tmp.clear();
+	scope_type = "";
 }
 
 ///
@@ -50,8 +51,9 @@ void scope_sort() {
 ///
 /// @string* scope
 ///
-void scope_add(string* scope) {	
+void scope_add(string* scope, string* type) {	
 	string str = *scope;
+	scope_type = *type;
     std::size_t prev_pos = 0, pos;
     while ((pos = str.find_first_of(",;", prev_pos)) != std::string::npos)
     {
