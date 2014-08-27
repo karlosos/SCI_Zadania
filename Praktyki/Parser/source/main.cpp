@@ -54,7 +54,7 @@ int main () {
 
 			// Petla pobierajaca synonimy/equivalenty dla danego slowa
 			// generuje html w postaci tabeli words.size();
-			for(int i = 0; i < words.size(); i++ ) {
+			for(int i = 0; i < 5; i++ ) {
 					// Pobieramy i trimujemy dane slowo
 					download_thesaurus(words[i]);
 					trim_thesaurus(words[i]);
@@ -63,7 +63,7 @@ int main () {
 				sort_deep_words();
 				// Petla pobierajaca synonimy dla danego slowa
 				// generuje html w postaci tabeli deep_words.size();
-				for(int i = 0; i < deep_words.size(); i++ ) {
+				for(int i = 0; i < 5; i++ ) {
 					download_thesaurus(deep_words[i]);
 					trim_thesaurus(deep_words[i], 0);
 				}
