@@ -1,14 +1,15 @@
 #ifndef SAVING_H
 #define SAVING_H
+
 void scope_save_xml(string word, string scope);
 void scope_save_html(string word, string scope);
+void scope_save_corrupt_xml(string word, string scope);
 
 ///
 /// Zapisuje scope do plików
 ///
 /// @string word
 ///
-
 void scope_save(string word) {
 	if(scope_words.size() > 0) {
 		for (int i=0; i < scope_words.size(); i++) {
@@ -17,6 +18,13 @@ void scope_save(string word) {
 		}
 	}
 
+	if(scope_words_corrupt.size() > 0) {
+		for (int i=0; i< scope_words_corrupt.size(); i++) {
+			scope_save_corrupt_xml(word, scope_words_corrupt.at(i));
+		}
+	}
+
+	scope_words_corrupt.clear();
 	scope_words.clear();
 	scope_words_tmp.clear();
 	scope_type = "";
@@ -59,14 +67,23 @@ void scope_add(string* scope, string* type) {
 	string str = *scope;
 	scope_type = *type;
     std::size_t prev_pos = 0, pos;
-    while ((pos = str.find_first_of(",;", prev_pos)) != std::string::npos)
-    {
-        if (pos > prev_pos)
-            scope_words_tmp.push_back(str.substr(prev_pos, pos-prev_pos));
-        prev_pos= pos+1;
-    }
-    if (prev_pos< str.length())
-        scope_words_tmp.push_back(str.substr(prev_pos, std::string::npos));
+
+	size_t comma = str.find(",");
+	size_t semicolon = str.find(";");
+
+	// Je¿eli nie ma ; i , to rób
+	if (comma!=std::string::npos && semicolon!=std::string::npos) {
+		scope_words_corrupt.push_back(str);
+	} else { // jezeli jest i ; i ,
+		while ((pos = str.find_first_of(",;", prev_pos)) != std::string::npos)
+		{
+			if (pos > prev_pos)
+				scope_words_tmp.push_back(str.substr(prev_pos, pos-prev_pos));
+			prev_pos= pos+1;
+		}
+		if (prev_pos < str.length())
+			scope_words_tmp.push_back(str.substr(prev_pos, std::string::npos));
+	}
 }
 
 ///
@@ -335,7 +352,7 @@ void scope_save_html(string word, string scope) {
 	out_html.open("zadanie2.html", std::ios::app);
 
 	// Lancuchy xml
-	string html_word_start = "\t <tr id=\"word\"> \n";
+	string html_word_start = "\t <tr id=\"word\" class=\"scope\"> \n";
 	string html_word_end = "\t </tr> \n";
 	string html_keyword = "\t\t<td id=\"keyword\">" + word + "</td> \n";
 
@@ -366,6 +383,36 @@ void scope_save_xml(string word, string scope) {
 		// Output plik index.html, otwieramy w formie dopisywania
 		std::ofstream out_xml;
 		out_xml.open("zadanie2.xml", std::ios::app);
+
+		// Lancuchy xml
+		string xml_word_start = "\t\t<word> \n";
+		string xml_word_end = "\t\t</word> \n";
+		string xml_keyword = "\t\t\t<keyword>" + word + "</keyword> \n";
+
+		string xml_type = "\t\t\t<type>"+ scope_type +"</type> \n";
+
+		string xml_scope = "\t\t\t<scope>" + scope + "</scope> \n";
+		string xml_synonyms = "\t\t\t<synonyms>" + scope + "</synonyms> \n";
+
+		// Zapisywanie kodu xml
+		out_xml << xml_word_start;
+		out_xml << xml_keyword;
+		out_xml << "\t\t\t<weight>100</weight> \n";
+		out_xml << xml_type;
+		out_xml << xml_scope;
+		out_xml << xml_synonyms;
+		out_xml << xml_word_end;
+
+		out_xml.close();
+}
+
+void scope_save_corrupt_xml(string word, string scope) {
+		cout << "Dodano wiersz corrupt. Word: " + word + " scope: " + scope + currentDateTime() << endl;
+		save_log("Dodano wiersz corrupt. Word: " + word + " scope: " + scope, currentDateTime());
+
+		// Output plik index.html, otwieramy w formie dopisywania
+		std::ofstream out_xml;
+		out_xml.open("zadanie2_corrupt.xml", std::ios::app);
 
 		// Lancuchy xml
 		string xml_word_start = "\t\t<word> \n";

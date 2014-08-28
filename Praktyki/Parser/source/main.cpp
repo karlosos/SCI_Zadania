@@ -7,9 +7,9 @@ string scope_type;
 std::vector < string > scope_words_tmp;
 std::vector < string > deep_words;
 std::vector < string > deep_words_tmp;
+std::vector < string > scope_words_corrupt;
 string previous_scope;
 
-int nr_podpunktu = 0;
 string log_name;
 
 #include "files.h"
@@ -29,15 +29,11 @@ int main () {
 ///Zadanie 2
 ////////////////////////////////////////////////////
 		if (nr_zadania == 2) {
-
-		do {
-			cout << "Podaj numer pudpunktu: B=0, A=1 [0 lub 1]: ";
-			cin >> nr_podpunktu;
-		} while(nr_podpunktu !=1 && nr_podpunktu !=0);
 			// Tworzy poczatek html
 			create_log(currentDateTime());
 			create_html("zadanie2");
 			create_xml("zadanie2");
+			create_xml("zadanie2_corrupt");
 
 			//mkdir("b_wordnik");
 			mkdir("thesaurus");
@@ -55,7 +51,7 @@ int main () {
 
 			// Petla pobierajaca synonimy/equivalenty dla danego slowa
 			// generuje html w postaci tabeli words.size();
-			for(int i = 0; i < words.size(); i++ ) {
+			for(int i = 0; i < 30; i++ ) {
 					// Pobieramy i trimujemy dane slowo
 					download_thesaurus(words[i]);
 					trim_thesaurus(words[i]);
@@ -64,7 +60,7 @@ int main () {
 				sort_deep_words();
 				// Petla pobierajaca synonimy dla danego slowa
 				// generuje html w postaci tabeli deep_words.size();
-				for(int i = 0; i < words.size(); i++ ) {
+				for(int i = 0; i < 30; i++ ) {
 					download_thesaurus(deep_words[i]);
 					trim_thesaurus(deep_words[i], 0);
 				}
@@ -73,6 +69,7 @@ int main () {
 			close_log(currentDateTime());
 			close_xml("zadanie2");
 			close_html("zadanie2");
+			create_xml("zadanie2_corrupt");
 		} 
 
 ////////////////////////////////////////////////////

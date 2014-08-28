@@ -30,7 +30,7 @@ void create_html(string file_name) {
 	file_name = file_name + ".html";
 	std::wstring w_file_name(file_name.begin(), file_name.end());
 	std::ofstream o_file (file_name, std::ofstream::out);
-	string html = "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"><meta http-equiv=\"refresh\" content=\"2\"/><title>Words</title><style>.deep {background-color: #FFE5AA;}</style></head><body><table border=\"1\"><tr id=\"head\"><th>Keyword</th><th>Weight</th><th>Type</th><th>Scope</th><th>Synonym</th></tr>";
+	string html = "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"><title>Words</title><style>.deep {background-color: #FFE5AA;} .scope {background-color: #CEB8F5;}</style></head><body><table border=\"1\"><tr id=\"head\"><th>Keyword</th><th>Weight</th><th>Type</th><th>Scope</th><th>Synonym</th></tr>";
 	o_file << html;
 	o_file.close();
 	ShellExecute(NULL, L"open", w_file_name.c_str(), NULL, NULL, SW_SHOWNORMAL);
@@ -44,7 +44,7 @@ void create_html_old(string file_name) {
 	file_name = file_name + ".html";
 	std::wstring w_file_name(file_name.begin(), file_name.end());
 	std::ofstream o_file (file_name, std::ofstream::out);
-	string html = "<html>\n<head>\n <meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"> \n <meta http-equiv=\"refresh\" content=\"2\"/>\n<title>Words</title>\n</head>\n<body>\n<table border=\"1\">\n<tr id=\"head\">\n<th>Keyword</th>\n<th>Weight</th>\n<th>Scope</th>\n<th>Synonym</th>\n</tr>\n";
+	string html = "<html>\n<head>\n <meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\">\n<title>Words</title>\n</head>\n<body>\n<table border=\"1\">\n<tr id=\"head\">\n<th>Keyword</th>\n<th>Weight</th>\n<th>Scope</th>\n<th>Synonym</th>\n</tr>\n";
 	o_file << html;
 	o_file.close();
 	ShellExecute(NULL, L"open", w_file_name.c_str(), NULL, NULL, SW_SHOWNORMAL);

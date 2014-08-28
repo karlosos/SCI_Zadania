@@ -230,11 +230,9 @@ void trim_thesaurus(string word) {
 			save_log("Unable to open file for word: " + word, currentDateTime());
 		}
 
-		if(nr_podpunktu==1) {
 			scope_clean();
 			scope_sort();
 			scope_save(word);
-		}
 }
 
 ///
@@ -278,6 +276,7 @@ void trim_thesaurus(string word, int deep) {
 						save_to_xml(word, type, scope, common_syn, syn, "zadanie2");
 						save_to_html(word, type, scope, common_syn, syn, "zadanie2", 1);
 
+						// Wchodzi g³ebiej dla noun
 						if(*type == "noun") {
 							for(int i=0; i<syn->size(); i++) {
 								deep_words_tmp.push_back(syn->at(i));
