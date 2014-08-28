@@ -56,12 +56,12 @@ int main () {
 
 			// Petla pobierajaca synonimy/equivalenty dla danego slowa
 			// generuje html w postaci tabeli words.size();
-			for(int i = 0; i < 30; i++ ) {
+			for(int i = 0; i < words.size(); i++ ) {
 					// Sprawdzamy czy nie istnieje plik. Je¿eli prawda to œci¹gnij.
 					if(fileNotExists(words[i], "thesaurus"))
 						download_thesaurus(words[i]);
 					else
-						cout << "N1 \n";
+						cout << "N1 " + words[i] + "\n";
 
 					trim_thesaurus(words[i]);
 			}
@@ -69,9 +69,11 @@ int main () {
 				sort_deep_words();
 				// Petla pobierajaca synonimy dla danego slowa
 				// generuje html w postaci tabeli deep_words.size();
-				for(int i = 0; i < 30; i++ ) {
+				for(int i = 0; i < deep_words.size(); i++ ) {
 					if(fileNotExists(deep_words[i], "thesaurus"))
 						download_thesaurus(deep_words[i]);
+					else
+						cout << "N1 deep" + deep_words[i] + "\n";
 					trim_thesaurus(deep_words[i], 0);
 				}
 
