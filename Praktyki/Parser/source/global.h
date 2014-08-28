@@ -15,7 +15,6 @@
 //#include <boost/tokenizer.hpp> //
 
 #pragma comment(lib, "urlmon.lib")
-
 using namespace std;
 
 // Zmienne globalne
@@ -91,5 +90,6 @@ void sort_deep_words() {
 		}
 		o_file.close();
 }
+
 
 #endif //GLOBAL_H

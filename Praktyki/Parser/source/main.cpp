@@ -39,9 +39,14 @@ int main () {
 			mkdir("thesaurus");
 
 			// Pobiera dane z wordnetcode i z wiktionary
-			download_wordnetcode();
-			download_wiktionary();
- 
+			if(fileNotExists("wordnetcode")) {
+				download_wordnetcode();
+			}
+
+			if(fileNotExists("wiktionary")) {
+				download_wiktionary();
+			}
+
 			// Wydziela dane z powyzszych plikow
 			trim_wordnetcode();
 			trim_wiktionary();
@@ -51,17 +56,22 @@ int main () {
 
 			// Petla pobierajaca synonimy/equivalenty dla danego slowa
 			// generuje html w postaci tabeli words.size();
-			for(int i = 0; i < words.size(); i++ ) {
-					// Pobieramy i trimujemy dane slowo
-					download_thesaurus(words[i]);
+			for(int i = 0; i < 30; i++ ) {
+					// Sprawdzamy czy nie istnieje plik. Je¿eli prawda to œci¹gnij.
+					if(fileNotExists(words[i], "thesaurus"))
+						download_thesaurus(words[i]);
+					else
+						cout << "N1 \n";
+
 					trim_thesaurus(words[i]);
 			}
 
 				sort_deep_words();
 				// Petla pobierajaca synonimy dla danego slowa
 				// generuje html w postaci tabeli deep_words.size();
-				for(int i = 0; i < deep_words.size(); i++ ) {
-					download_thesaurus(deep_words[i]);
+				for(int i = 0; i < 30; i++ ) {
+					if(fileNotExists(deep_words[i], "thesaurus"))
+						download_thesaurus(deep_words[i]);
 					trim_thesaurus(deep_words[i], 0);
 				}
 

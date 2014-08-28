@@ -435,4 +435,32 @@ void scope_save_corrupt_xml(string word, string scope) {
 
 		out_xml.close();
 }
+
+bool fileNotExists(string word, string folder) {
+		// Input file
+		string i_path = folder + "\\" + word + ".txt";
+        ifstream i_file (i_path);
+
+		// Trimming second file
+        if (i_file.is_open()) { 
+			return false;
+		} else {
+			cout << "There's no file. We will download: " << word << endl;
+			save_log("There's no file. We will download: " + word, currentDateTime());
+		}
+}
+
+bool fileNotExists(string word) {
+		// Input file
+		string i_path = word + ".txt";
+        ifstream i_file (i_path);
+
+		// Trimming second file
+        if (i_file.is_open()) { 
+			return false;
+		} else {
+			cout << "There's no file. We will download: " << word << endl;
+			save_log("There's no file. We will download: " + word, currentDateTime());
+		}
+}
 #endif //SAVING_H
