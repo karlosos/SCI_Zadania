@@ -66,16 +66,16 @@ int main () {
 					trim_thesaurus(words[i]);
 			}
 
-				sort_deep_words();
-				// Petla pobierajaca synonimy dla danego slowa
-				// generuje html w postaci tabeli deep_words.size();
-				for(int i = 0; i < deep_words.size(); i++ ) {
-					if(fileNotExists(deep_words[i], "thesaurus"))
-						download_thesaurus(deep_words[i]);
-					else
-						cout << "N1 deep" + deep_words[i] + "\n";
-					trim_thesaurus(deep_words[i], 0);
-				}
+				//sort_deep_words();
+				//// Petla pobierajaca synonimy dla danego slowa
+				//// generuje html w postaci tabeli deep_words.size();
+				//for(int i = 0; i < deep_words.size(); i++ ) {
+				//	if(fileNotExists(deep_words[i], "thesaurus"))
+				//		download_thesaurus(deep_words[i]);
+				//	else
+				//		cout << "N1 deep" + deep_words[i] + "\n";
+				//	trim_thesaurus(deep_words[i], 0);
+				//}
 
 			// Domykamy pliki
 			close_log(currentDateTime());

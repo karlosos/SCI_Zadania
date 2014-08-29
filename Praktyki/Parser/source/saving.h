@@ -73,16 +73,15 @@ void scope_add(string* scope, string* type) {
 
 	// Je¿eli nie ma ; i , to rób
 	if (comma!=std::string::npos && semicolon!=std::string::npos) {
-		scope_words_corrupt.push_back(str);
-	} else { // jezeli jest i ; i ,
 		while ((pos = str.find_first_of(",;", prev_pos)) != std::string::npos)
 		{
 			if (pos > prev_pos)
-				scope_words_tmp.push_back(str.substr(prev_pos, pos-prev_pos));
+				scope_words_corrupt.push_back(str.substr(prev_pos, pos-prev_pos));
 			prev_pos= pos+1;
 		}
 		if (prev_pos < str.length())
-			scope_words_tmp.push_back(str.substr(prev_pos, std::string::npos));
+			scope_words_corrupt.push_back(str.substr(prev_pos, std::string::npos));
+	} else {
 	}
 }
 
