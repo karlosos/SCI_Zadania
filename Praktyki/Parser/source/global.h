@@ -37,7 +37,7 @@ const std::string currentDateTime() {
     time_t     now = time(0);
     struct tm  tstruct;
     char       buf[80];
-    tstruct = *localtime(&now);
+	localtime_s(&tstruct, &now);
     // Visit http://en.cppreference.com/w/cpp/chrono/c/strftime
     // for more information about date/time format
     strftime(buf, sizeof(buf), "%Y-%m-%d %H-%M-%S", &tstruct);
@@ -50,7 +50,7 @@ const std::string currentDateTime() {
 ///
 void sort_unique_words() {
 		// wiki_words dodaje do words i usuwam powtorzenia
-        for( int i = 0; i < wiki_words.size(); i++ )           
+        for( unsigned int i = 0; i < wiki_words.size(); i++ )           
                 words.push_back(wiki_words[i]);
 
         sort(words.begin(), words.end());
@@ -60,7 +60,7 @@ void sort_unique_words() {
 		// nie potrzebne
 		std::ofstream o_file ("b_all_words.txt", std::ofstream::out);
 
-		for( int i = 0; i < words.size(); i++ )  {
+		for(unsigned int i = 0; i < words.size(); i++ )  {
 			o_file << words[i] << "\n";
 		}
 		o_file.close();
@@ -85,7 +85,7 @@ void sort_deep_words() {
 		// nie potrzebne
 		std::ofstream o_file ("b_all_deep_words.txt", std::ofstream::out);
 
-		for( int i = 0; i < deep_words.size(); i++ )  {
+		for (unsigned int i = 0; i < deep_words.size(); i++)  {
 			o_file << deep_words[i] << "\n";
 		}
 		o_file.close();

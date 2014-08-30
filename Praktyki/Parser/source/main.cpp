@@ -36,7 +36,7 @@ int main () {
 			create_xml("zadanie2_corrupt");
 
 			//mkdir("b_wordnik");
-			mkdir("thesaurus");
+			_mkdir("thesaurus");
 
 			// Pobiera dane z wordnetcode i z wiktionary
 			if(fileNotExists("wordnetcode")) {
@@ -56,7 +56,7 @@ int main () {
 
 			// Petla pobierajaca synonimy/equivalenty dla danego slowa
 			// generuje html w postaci tabeli words.size();
-			for(int i = 0; i < words.size(); i++ ) {
+			for (unsigned int i = 0; i < words.size(); i++) {
 					// Sprawdzamy czy nie istnieje plik. Je¿eli prawda to œci¹gnij.
 					if(fileNotExists(words[i], "thesaurus"))
 						download_thesaurus(words[i]);
@@ -69,7 +69,7 @@ int main () {
 				sort_deep_words();
 				// Petla pobierajaca synonimy dla danego slowa
 				// generuje html w postaci tabeli deep_words.size();
-				for(int i = 0; i < deep_words.size(); i++ ) {
+				for (unsigned int i = 0; i < deep_words.size(); i++) {
 					if(fileNotExists(deep_words[i], "thesaurus"))
 						download_thesaurus(deep_words[i]);
 					else
@@ -95,9 +95,9 @@ int main () {
 			create_html_old("zadanie1");
 			create_xml("zadanie1");
 
-			mkdir("b_wordnik");
-			mkdir("t_wordnik");
-			mkdir("wordnik");
+			_mkdir("b_wordnik");
+			_mkdir("t_wordnik");
+			_mkdir("wordnik");
 
 			// Pobiera dane z wordnetcode i z wiktionary
 			download_wordnetcode();
@@ -112,7 +112,7 @@ int main () {
 
 			// Petla pobierajaca synonimy/equivalenty dla danego slowa
 			// generuje html w postaci tabeli 
-			for(int i = 0; i < words.size(); i++ ) {
+			for (unsigned int i = 0; i < words.size(); i++) {
 				// Pobieramy i trimujemy dane slowo
 				download_wordnik(words[i]);
 				trim_wordnik(words[i]);

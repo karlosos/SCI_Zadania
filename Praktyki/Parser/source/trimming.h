@@ -93,10 +93,10 @@ void trim_thesaurus(string word) {
 		string line;
 
 		// Wskaüniki
-		string *type;
-		string *scope;
-		vector<string> *common_syn;
-		vector<string> *syn;
+		string *type = nullptr;
+		string *scope = nullptr;
+		vector<string> *common_syn = nullptr;
+		vector<string> *syn = nullptr;
 
 		// Input file
 		string i_path = "thesaurus\\" + word + ".txt";
@@ -119,16 +119,18 @@ void trim_thesaurus(string word) {
 
                 while ( getline (i_file,line))
                 {
-					if(regex_search (line, pattern_scope_end)) {
-						// Zapisywanie do html i xml
-						save_to_xml(word, type, scope, common_syn, syn, "zadanie2");
-						save_to_html(word, type, scope, common_syn, syn, "zadanie2", 0);
+					if (regex_search(line, pattern_scope_end)) {
+						if (type != nullptr && scope != nullptr && common_syn != nullptr && syn != nullptr) {
+							// Zapisywanie do html i xml
+							save_to_xml(word, type, scope, common_syn, syn, "zadanie2");
+							save_to_html(word, type, scope, common_syn, syn, "zadanie2", 0);
+						}
 
 						if(*type == "noun") {
-							for(int i=0; i<syn->size(); i++) {
+							for (unsigned int i = 0; i<syn->size(); i++) {
 								deep_words_tmp.push_back(syn->at(i));
 							}
-							for(int i=0; i<common_syn->size(); i++) {
+							for (unsigned int i = 0; i<common_syn->size(); i++) {
 								deep_words_tmp.push_back(common_syn->at(i));
 							}
 						}
@@ -245,10 +247,10 @@ void trim_thesaurus(string word, int deep) {
 		string line;
 
 		// Wskaüniki
-		string *type;
-		string *scope;
-		vector<string> *common_syn;
-		vector<string> *syn;
+		string *type = nullptr;
+		string *scope = nullptr;
+		vector<string> *common_syn = nullptr;
+		vector<string> *syn = nullptr;
 
 		// Input file
 		string i_path = "thesaurus\\" + word + ".txt";
@@ -272,16 +274,18 @@ void trim_thesaurus(string word, int deep) {
                 while ( getline (i_file,line))
                 {
 					if(regex_search (line, pattern_scope_end)) {
-						// Zapisywanie do html i xml
-						save_to_xml(word, type, scope, common_syn, syn, "zadanie2");
-						save_to_html(word, type, scope, common_syn, syn, "zadanie2", 1);
+						if (type != nullptr && scope != nullptr && common_syn != nullptr && syn != nullptr) {
+							// Zapisywanie do html i xml
+							save_to_xml(word, type, scope, common_syn, syn, "zadanie2");
+							save_to_html(word, type, scope, common_syn, syn, "zadanie2", 1);
+						}
 
 						// Wchodzi g≥ebiej dla noun
 						if(*type == "noun") {
-							for(int i=0; i<syn->size(); i++) {
+							for (unsigned int i = 0; i<syn->size(); i++) {
 								deep_words_tmp.push_back(syn->at(i));
 							}
-							for(int i=0; i<common_syn->size(); i++) {
+							for (unsigned int i = 0; i<common_syn->size(); i++) {
 								deep_words_tmp.push_back(common_syn->at(i));
 							}
 						}
@@ -404,6 +408,7 @@ void trim_wordnik(string word) {
         if (i_file.is_open())
         {
                 regex pattern_syn_start( "synonyms" );
+				// Sprawdzic "<\/ol>"
 				regex pattern_end( "<\/ol>" );
 				regex pattern_eq_start( "equivalents" );
 				regex pattern_syn( "<span data-definition-for=\"" );

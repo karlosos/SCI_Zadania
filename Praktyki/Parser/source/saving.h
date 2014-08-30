@@ -12,14 +12,14 @@ void scope_save_corrupt_xml(string word, string scope);
 ///
 void scope_save(string word) {
 	if(scope_words.size() > 0) {
-		for (int i=0; i < scope_words.size(); i++) {
+		for (unsigned int i = 0; i < scope_words.size(); i++) {
 			scope_save_xml(word, scope_words.at(i));
 			scope_save_html(word, scope_words.at(i));
 		}
 	}
 
 	if(scope_words_corrupt.size() > 0) {
-		for (int i=0; i< scope_words_corrupt.size(); i++) {
+		for (unsigned int i = 0; i< scope_words_corrupt.size(); i++) {
 			scope_save_corrupt_xml(word, scope_words_corrupt.at(i));
 		}
 	}
@@ -34,7 +34,7 @@ void scope_save(string word) {
 /// Czyœci scope'y z spacji na pocz¹tku
 ///
 void scope_clean() {
-	for (int i=0; i < scope_words_tmp.size(); i++) {
+	for (unsigned int i = 0; i < scope_words_tmp.size(); i++) {
 		if(scope_words_tmp.at(i).at(0) == 0x20) 
 			scope_words_tmp.at(i).erase(0,1);
 	}
@@ -44,7 +44,7 @@ void scope_clean() {
 /// Sortuje i usuwa powtórzenia
 ///
 void scope_sort() {
-	for (int i=0; i < scope_words_tmp.size(); i++) {
+	for (unsigned int i = 0; i < scope_words_tmp.size(); i++) {
 		int spaces = std::count_if(scope_words_tmp.at(i).begin(), scope_words_tmp.at(i).end(), [](unsigned char c){ return isspace(c); });
 		if (spaces <2) {
 			scope_words.push_back(scope_words_tmp.at(i));
@@ -447,6 +447,7 @@ bool fileNotExists(string word, string folder) {
 		} else {
 			cout << "There's no file. We will download: " << word << endl;
 			save_log("There's no file. We will download: " + word, currentDateTime());
+			return true;
 		}
 }
 
@@ -461,6 +462,7 @@ bool fileNotExists(string word) {
 		} else {
 			cout << "There's no file. We will download: " << word << endl;
 			save_log("There's no file. We will download: " + word, currentDateTime());
+			return true;
 		}
 }
 #endif //SAVING_H
