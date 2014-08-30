@@ -111,7 +111,7 @@ int main () {
 			sort_unique_words();
 
 			// Petla pobierajaca synonimy/equivalenty dla danego slowa
-			// generuje html w postaci tabeli 
+			// generuje html w postaci tabeli
 			for (unsigned int i = 0; i < words.size(); i++) {
 				// Pobieramy i trimujemy dane slowo
 				download_wordnik(words[i]);
