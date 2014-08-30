@@ -181,7 +181,7 @@ void save_to_xml(string word, vector<string>* syn, int weight) {
 		out_xml.open("zadanie1.xml", std::ios::app);
 
 		long double syn_weight = syn->size();
-		long double w_weight = weight;
+		int w_weight = weight;
 
 		// Lancuchy xml
 		string xml_word_start = "\t\t<word> \n";
@@ -308,7 +308,6 @@ void save_to_html(string word, vector<string>* syn, int weight){
 		out_html.open("zadanie1.html", std::ios::app);
 
 		long double syn_weight = syn->size();
-		long double w_weight = weight;
 
 		// Lancuchy xml
 		string html_word_start = "\t <tr id=\"word\"> \n";
@@ -323,7 +322,7 @@ void save_to_html(string word, vector<string>* syn, int weight){
 		if (syn_weight > 0) {
 			out_html << html_word_start;
 			out_html << html_keyword;
-			out_html << "\t \t <td id=\"weight\">" + to_string(w_weight) + "</td> \n";
+			out_html << "\t \t <td id=\"weight\">" + to_string(weight) + "</td> \n";
 			out_html << html_scope;
 			out_html << html_synonyms_start;
 			for (int i=0; i<syn_weight; i++) {

@@ -409,7 +409,7 @@ void trim_wordnik(string word) {
         {
                 regex pattern_syn_start( "synonyms" );
 				// Sprawdzic "<\/ol>"
-				regex pattern_end( "<\/ol>" );
+				regex pattern_end( "</ol>" );
 				regex pattern_eq_start( "equivalents" );
 				regex pattern_syn( "<span data-definition-for=\"" );
 				regex pattern_wikisaurus("See Wikisaurus:");
