@@ -56,13 +56,13 @@ int main () {
 			sort_unique_words();
 			// Petla pobierajaca synonimy/equivalenty dla danego slowa
 			// generuje html w postaci tabeli words.size();
-			for (unsigned int i = 0; i < 20; i++) {
+			for (unsigned int i = 0; i < words.size(); i++) {
 					// Sprawdzamy czy nie istnieje plik. Je¿eli prawda to œci¹gnij.
 				//double(words.size())
 					if(fileNotExists(words[i], "thesaurus"))
 						download_thesaurus(words[i]);
 					else {
-						status = (i / double(20)) * 100;
+						status = ( i / double(words.size()) ) * 100;
 						cout << "N1 " + words[i] + ". " + to_string(status) + "%\n";
 					}
 

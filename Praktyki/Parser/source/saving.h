@@ -107,7 +107,7 @@ void save_log(string message, string date) {
 /// @vector<string>* common_syn - wskaznik na kontener common synonimow
 /// @vector<string>* syn - wskaznik na kontener pozostalych synonimow
 ///
-void save_to_xml(string word, string* type, string* scope, vector<string>* common_syn, vector<string>* syn, string file_name) {
+void save_to_xml(string word, string scope, string* type, vector<string>* common_syn, vector<string>* syn, string file_name) {
 		// Output plik index.html, otwieramy w formie dopisywania
 		std::ofstream out_xml;
 		out_xml.open("zadanie2.xml", std::ios::app);
@@ -122,7 +122,7 @@ void save_to_xml(string word, string* type, string* scope, vector<string>* commo
 
 		string xml_type = "\t\t\t<type>" + *type + "</type> \n";
 
-		string xml_scope = "\t\t\t<scope>" + *scope + "</scope> \n";
+		string xml_scope = "\t\t\t<scope>" + scope + "</scope> \n";
 		string xml_synonyms_start = "\t\t\t<synonyms>";
 		string xml_synonyms_end = "</synonyms> \n";
 		string xml_synonym = "";
