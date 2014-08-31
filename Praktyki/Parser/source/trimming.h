@@ -97,7 +97,7 @@ void trim_thesaurus(string word) {
 		string *scope = nullptr;
 		vector<string> *common_syn = nullptr;
 		vector<string> *syn = nullptr;
-		vector<string> scopes;
+		vector<string> *scopes = new vector < string > ;
 
 		// Input file
 		string i_path = "thesaurus\\" + word + ".txt";
@@ -134,7 +134,7 @@ void trim_thesaurus(string word) {
 							scope_counter++;
 							// Zapisywanie do html i xml
 							save_to_xml(word, type, scope, common_syn, syn, "zadanie2");
-							save_to_html(word, type, scope, common_syn, syn, "zadanie2", 0, scopes.at(scope_counter));
+							save_to_html(word, type, scope, common_syn, syn, "zadanie2", 0, scopes->at(scope_counter));
 						}
 
 						if(*type == "noun") {
@@ -155,7 +155,7 @@ void trim_thesaurus(string word) {
 						is_scope = false;
 					}
 
-					if (regex_search(line, pattern_scopes) && scopes.size() < 1) {
+					if (regex_search(line, pattern_scopes) && scopes->size() < 1) {
 						is_scopes = true;
 					}
 
@@ -182,7 +182,7 @@ void trim_thesaurus(string word) {
 							std::string str = line.substr(pos_start, pos_len);
 
 							// Push common synonim
-							scopes.push_back(str);
+							scopes->push_back(str);
 						}
 					}
 
@@ -267,6 +267,8 @@ void trim_thesaurus(string word) {
 			scope_clean();
 			scope_sort();
 			scope_save(word);
+
+			delete scopes;
 }
 
 ///
