@@ -106,7 +106,7 @@ void trim_thesaurus(string word) {
 			regex r_scope_end("<div id=\"filter-");
 			regex r_type("<em class=\"txt\">");
 
-			regex r_synonym("<a href=\"http://thesaurus.com/browse/");
+			regex r_synonym("<a href=\"http://www.thesaurus.com/browse/");
 			regex r_common_synonym("class=common-word");
 
 			regex r_meanings_start(" <!-- words-gallery -->");
@@ -150,7 +150,14 @@ void trim_thesaurus(string word) {
 						if (regex_search(line, r_scope_end)) {
 							is_scope = false;
 							// Deep words
-
+							if (*type == "noun") {
+								for (unsigned int i = 0; i<syn->size(); i++) {
+									deep_words_tmp.push_back(syn->at(i));
+								}
+								for (unsigned int i = 0; i<common_syn->size(); i++) {
+									deep_words_tmp.push_back(common_syn->at(i));
+								}
+							}
 							// Zapisywanie
 							save_to_html(word, meanings->at(++meaning_count), type, common_syn, syn, "zadanie2", 0);
 							// Usuwanie zmiennych
