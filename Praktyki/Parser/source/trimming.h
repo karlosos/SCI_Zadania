@@ -97,6 +97,7 @@ void trim_thesaurus(string word) {
 		string *scope = nullptr;
 		vector<string> *common_syn = nullptr;
 		vector<string> *syn = nullptr;
+		vector<string> scopes;
 
 		// Input file
 		string i_path = "thesaurus\\" + word + ".txt";
@@ -111,19 +112,29 @@ void trim_thesaurus(string word) {
 				regex pattern_type("<em class=\"txt\">");
 				regex pattern_synonym("<a href=\"http://thesaurus.com/browse/");
 				regex pattern_common_synonym("class=common-word");
+				regex pattern_scopes(" <!-- words-gallery -->");
+				regex pattern_scopes_end("<span class=\"layer disabled\"></span>");
+				regex pattern_scopes_list("<strong class=\"ttl\">");
+
+				bool is_scopes = false;
 
 				bool is_scope = false;
 				bool is_synonym = false;
 				bool is_common_synonym = false;
 				bool used = false;
+				int scope_counter = -1;
 
                 while ( getline (i_file,line))
                 {
+					if (regex_search(line, pattern_scopes_end)) {
+						is_scopes = false;
+					}
 					if (regex_search(line, pattern_scope_end)) {
 						if (type != nullptr && scope != nullptr && common_syn != nullptr && syn != nullptr) {
+							scope_counter++;
 							// Zapisywanie do html i xml
 							save_to_xml(word, type, scope, common_syn, syn, "zadanie2");
-							save_to_html(word, type, scope, common_syn, syn, "zadanie2", 0);
+							save_to_html(word, type, scope, common_syn, syn, "zadanie2", 0, scopes.at(scope_counter));
 						}
 
 						if(*type == "noun") {
@@ -144,6 +155,11 @@ void trim_thesaurus(string word) {
 						is_scope = false;
 					}
 
+					if (regex_search(line, pattern_scopes) && scopes.size() < 1) {
+						is_scopes = true;
+					}
+
+
 					if(regex_search (line, pattern_scope_start)) {
 						is_scope = true;
 						// Tworzy nowe zmienne dla wskaznikow
@@ -152,6 +168,22 @@ void trim_thesaurus(string word) {
 						common_syn = new vector <string>;
 						syn = new vector <string>;
 
+					}
+
+					if (is_scopes) {
+						if (regex_search(line, pattern_scopes_list)) {
+							std::size_t pos_start = line.find("<strong class=\"ttl\">");
+							std::size_t pos_end = line.find("</strong>", pos_start);
+
+							pos_start += 20;
+							pos_end;
+
+							std::size_t pos_len = pos_end - pos_start;
+							std::string str = line.substr(pos_start, pos_len);
+
+							// Push common synonim
+							scopes.push_back(str);
+						}
 					}
 
 					if(is_scope) {
@@ -251,6 +283,7 @@ void trim_thesaurus(string word, int deep) {
 		string *scope = nullptr;
 		vector<string> *common_syn = nullptr;
 		vector<string> *syn = nullptr;
+		vector<string> scopes;
 
 		// Input file
 		string i_path = "thesaurus\\" + word + ".txt";
@@ -265,7 +298,11 @@ void trim_thesaurus(string word, int deep) {
 				regex pattern_type("<em class=\"txt\">");
 				regex pattern_synonym("<a href=\"http://thesaurus.com/browse/");
 				regex pattern_common_synonym("class=common-word");
+				regex pattern_scopes(" <!-- words-gallery -->");
+				regex pattern_scopes_end("<span class=\"layer disabled\"></span>");
+				regex pattern_scopes_list("<strong class=\"ttl\">");
 
+				bool is_scopes = false;
 				bool is_scope = false;
 				bool is_synonym = false;
 				bool is_common_synonym = false;
@@ -277,7 +314,7 @@ void trim_thesaurus(string word, int deep) {
 						if (type != nullptr && scope != nullptr && common_syn != nullptr && syn != nullptr) {
 							// Zapisywanie do html i xml
 							save_to_xml(word, type, scope, common_syn, syn, "zadanie2");
-							save_to_html(word, type, scope, common_syn, syn, "zadanie2", 1);
+							//save_to_html(word, type, scope, common_syn, syn, "zadanie2", 1);
 						}
 
 						// Wchodzi g³ebiej dla noun
@@ -299,6 +336,10 @@ void trim_thesaurus(string word, int deep) {
 						is_scope = false;
 					}
 
+					if (regex_search(line, pattern_scopes) && is_scopes == false) {
+						is_scopes = true;
+					}
+
 					if(regex_search (line, pattern_scope_start)) {
 						is_scope = true;
 						// Tworzy nowe zmienne dla wskaznikow
@@ -309,6 +350,22 @@ void trim_thesaurus(string word, int deep) {
 
 					}
 
+					if (is_scopes) {
+						if (regex_search(line, pattern_scopes_list)) {
+							std::size_t pos_start = line.find("<strong class=\"ttl\">");
+							std::size_t pos_end = line.find("</strong>", pos_start);
+
+							pos_start += 20;
+							pos_end;
+
+							std::size_t pos_len = pos_end - pos_start;
+							std::string str = line.substr(pos_start, pos_len);
+
+							// Push common synonim
+							scopes.push_back(str);
+						}
+					}
+		
 					if(is_scope) {
 						if(is_synonym) {
 							std::size_t pos_start = line.find("<span class=\"text\">");  
