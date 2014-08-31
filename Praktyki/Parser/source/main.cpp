@@ -59,7 +59,7 @@ int main () {
 			for (unsigned int i = 0; i < words.size(); i++) {
 					// Sprawdzamy czy nie istnieje plik. Je¿eli prawda to œci¹gnij.
 				//double(words.size())
-					if(fileNotExists(words[i], "thesaurus"))
+				if (fileNotExists(words[i], "thesaurus"))
 						download_thesaurus(words[i]);
 					else {
 						status = ( i / double(words.size()) ) * 100;
@@ -73,11 +73,11 @@ int main () {
 				// Petla pobierajaca synonimy dla danego slowa
 				// generuje html w postaci tabeli deep_words.size();
 				for (unsigned int i = 0; i < deep_words.size(); i++) {
-					if(fileNotExists(deep_words[i], "thesaurus"))
+					if (fileNotExists(deep_words[i], "thesaurus"))
 						download_thesaurus(deep_words[i]);
 					else {
 						status = (i / double(deep_words.size())) * 100;
-						cout << "N1 deep " + words[i] + ". " + to_string(status) + "%\n";
+						cout << "N1 deep " + deep_words[i] + ". nr=" + to_string(i) + " nr_o=" + to_string(words.size()) + " " + to_string(status) + "%\n";
 					}
 					trim_thesaurus(deep_words[i], 0);
 				}

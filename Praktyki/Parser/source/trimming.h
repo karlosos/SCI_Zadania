@@ -106,7 +106,8 @@ void trim_thesaurus(string word) {
 			regex r_scope_end("<div id=\"filter-");
 			regex r_type("<em class=\"txt\">");
 
-			regex r_synonym("<a href=\"http://www.thesaurus.com/browse/");
+			//regex r_synonym("<a href=\"http://www.thesaurus.com/browse/"); data-id="
+			regex r_synonym("data-id=");
 			regex r_common_synonym("class=common-word");
 
 			regex r_meanings_start(" <!-- words-gallery -->");
@@ -257,7 +258,9 @@ void trim_thesaurus(string word, int deep) {
 		regex r_scope_end("<div id=\"filter-");
 		regex r_type("<em class=\"txt\">");
 
-		regex r_synonym("<a href=\"http://www.thesaurus.com/browse/");
+		//regex r_synonym("<a href=\"http://www.thesaurus.com/browse/"); data-id="
+		regex r_synonym("data-id=");
+
 		regex r_common_synonym("class=common-word");
 
 		regex r_meanings_start(" <!-- words-gallery -->");
@@ -366,7 +369,6 @@ void trim_thesaurus(string word, int deep) {
 					}
 				}
 			}// - Szukanie ca³ego scope
-
 		}
 		delete meanings;
 	}
