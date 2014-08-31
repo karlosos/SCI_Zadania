@@ -77,7 +77,7 @@ int main () {
 						download_thesaurus(deep_words[i]);
 					else {
 						status = (i / double(deep_words.size())) * 100;
-						cout << "N1 deep " + deep_words[i] + ". nr=" + to_string(i) + " nr_o=" + to_string(words.size()) + " " + to_string(status) + "%\n";
+						cout << "N1 deep " + deep_words[i] + ". nr=" + to_string(long double(i)) + " nr_o=" + to_string(long double(words.size())) + " " + to_string(status) + "%\n";
 					}
 					trim_thesaurus(deep_words[i], 0);
 				}
