@@ -160,8 +160,8 @@ void trim_thesaurus(string word) {
 								}
 							}
 							// Zapisywanie
-							save_to_xml(word, meanings->at(++meaning_count), type, common_syn, syn, "zadanie2");
-							save_to_html(word, meanings->at(meaning_count), type, common_syn, syn, "zadanie2", 0);
+							//save_to_xml(word, meanings->at(++meaning_count), type, common_syn, syn, "zadanie2");
+							save_to_html(word, meanings->at(++meaning_count), type, common_syn, syn, "zadanie2", 0);
 							// Usuwanie zmiennych
 							delete type;
 							delete common_syn;

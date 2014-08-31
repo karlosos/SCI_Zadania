@@ -69,18 +69,15 @@ void scope_add(string scope, string* type) {
 	size_t comma = scope.find(",");
 	size_t semicolon = scope.find(";");
 
-	// Je¿eli nie ma ; i , to rób
 	if (comma!=std::string::npos && semicolon!=std::string::npos) {
-		scope_words_corrupt.push_back(scope);
-	} else { // jezeli jest i ; i ,
 		while ((pos = scope.find_first_of(",;", prev_pos)) != std::string::npos)
 		{
 			if (pos > prev_pos)
-				scope_words_tmp.push_back(scope.substr(prev_pos, pos-prev_pos));
+				scope_words_corrupt.push_back(scope.substr(prev_pos, pos-prev_pos));
 			prev_pos= pos+1;
 		}
 		if (prev_pos < scope.length())
-			scope_words_tmp.push_back(scope.substr(prev_pos, std::string::npos));
+			scope_words_corrupt.push_back(scope.substr(prev_pos, std::string::npos));
 	}
 }
 
