@@ -60,29 +60,27 @@ void scope_sort() {
 ///
 /// @string* scope
 ///
-void scope_add(string* scope, string* type) {
+void scope_add(string scope, string* type) {
 	scope_words.clear();
 	scope_words_tmp.clear();
-
-	string str = *scope;
 	scope_type = *type;
     std::size_t prev_pos = 0, pos;
 
-	size_t comma = str.find(",");
-	size_t semicolon = str.find(";");
+	size_t comma = scope.find(",");
+	size_t semicolon = scope.find(";");
 
 	// Je¿eli nie ma ; i , to rób
 	if (comma!=std::string::npos && semicolon!=std::string::npos) {
-		scope_words_corrupt.push_back(str);
+		scope_words_corrupt.push_back(scope);
 	} else { // jezeli jest i ; i ,
-		while ((pos = str.find_first_of(",;", prev_pos)) != std::string::npos)
+		while ((pos = scope.find_first_of(",;", prev_pos)) != std::string::npos)
 		{
 			if (pos > prev_pos)
-				scope_words_tmp.push_back(str.substr(prev_pos, pos-prev_pos));
+				scope_words_tmp.push_back(scope.substr(prev_pos, pos-prev_pos));
 			prev_pos= pos+1;
 		}
-		if (prev_pos < str.length())
-			scope_words_tmp.push_back(str.substr(prev_pos, std::string::npos));
+		if (prev_pos < scope.length())
+			scope_words_tmp.push_back(scope.substr(prev_pos, std::string::npos));
 	}
 }
 
@@ -281,8 +279,18 @@ void save_to_html(string word, string scope, string* type,vector<string>* common
 			out_html << html_synonyms_end;
 			out_html << html_word_end;
 		}
-
 		out_html.close();
+
+		if (previous_scope != scope) {
+			previous_scope = scope;
+			scope_add(scope, type);
+			scope_clean();
+			scope_sort();
+			scope_save(word);
+			scope_words.clear();
+			scope_words_tmp.clear();
+			scope_type = "";
+		}
 	}
 
 ///

@@ -19,6 +19,7 @@ string log_name;
 #include "scope.h"
 
 int main () {
+	long double status = 0;
 		int nr_zadania = 0;
 
 		while(nr_zadania != 1 && nr_zadania != 2) {
@@ -53,15 +54,17 @@ int main () {
  
 			// Sortuje i usuwa powtorzenia w kontenerze
 			sort_unique_words();
-
 			// Petla pobierajaca synonimy/equivalenty dla danego slowa
 			// generuje html w postaci tabeli words.size();
-			for (unsigned int i = 0; i < words.size(); i++) {
+			for (unsigned int i = 0; i < 20; i++) {
 					// Sprawdzamy czy nie istnieje plik. Je¿eli prawda to œci¹gnij.
+				//double(words.size())
 					if(fileNotExists(words[i], "thesaurus"))
 						download_thesaurus(words[i]);
-					else
-						cout << "N1 " + words[i] + "\n";
+					else {
+						status = (i / double(20)) * 100;
+						cout << "N1 " + words[i] + ". " + to_string(status) + "%\n";
+					}
 
 					trim_thesaurus(words[i]);
 			}
@@ -72,8 +75,10 @@ int main () {
 				for (unsigned int i = 0; i < deep_words.size(); i++) {
 					if(fileNotExists(deep_words[i], "thesaurus"))
 						download_thesaurus(deep_words[i]);
-					else
-						cout << "N1 deep" + deep_words[i] + "\n";
+					else {
+						status = (i / double(deep_words.size())) * 100;
+						cout << "N1 deep " + words[i] + ". " + to_string(status) + "%\n";
+					}
 					trim_thesaurus(deep_words[i], 0);
 				}
 

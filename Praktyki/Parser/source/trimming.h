@@ -240,173 +240,138 @@ void trim_thesaurus(string word) {
 /// @param int deep
 ///
 void trim_thesaurus(string word, int deep) {
+	// Input file
+	string i_path = "thesaurus\\" + word + ".txt";
+	ifstream i_file(i_path);
+
+	// Trimming second file
+	if (i_file.is_open()) {
 		string line;
-
-		// WskaŸniki
 		string *type = nullptr;
-		string *scope = nullptr;
-		vector<string> *common_syn = nullptr;
-		vector<string> *syn = nullptr;
-		vector<string> scopes;
+		vector <string> *meanings = new vector <string>;
+		vector <string> *syn = nullptr;
+		vector <string> *common_syn = nullptr;
 
-		// Input file
-		string i_path = "thesaurus\\" + word + ".txt";
-        ifstream i_file (i_path);
+		regex r_scope_start("<div id=\"synonyms-");
+		regex r_scope_end("<div id=\"filter-");
+		regex r_type("<em class=\"txt\">");
 
-		// Trimming second file
-        if (i_file.is_open())
-        {
-                regex pattern_scope_start( "<div id=\"synonyms-" );
-				regex pattern_scope_end( "<div id=\"filter-" );
-				regex pattern_scope_name("<strong class=\"ttl\">");
-				regex pattern_type("<em class=\"txt\">");
-				regex pattern_synonym("<a href=\"http://thesaurus.com/browse/");
-				regex pattern_common_synonym("class=common-word");
-				regex pattern_scopes(" <!-- words-gallery -->");
-				regex pattern_scopes_end("<span class=\"layer disabled\"></span>");
-				regex pattern_scopes_list("<strong class=\"ttl\">");
+		regex r_synonym("<a href=\"http://www.thesaurus.com/browse/");
+		regex r_common_synonym("class=common-word");
 
-				bool is_scopes = false;
-				bool is_scope = false;
-				bool is_synonym = false;
-				bool is_common_synonym = false;
-				bool used = false;
+		regex r_meanings_start(" <!-- words-gallery -->");
+		regex r_meanings_end("</ul>");
+		regex r_meaning_list("<strong class=\"ttl\">");
 
-                while ( getline (i_file,line))
-                {
-					if(regex_search (line, pattern_scope_end)) {
-						if (type != nullptr && scope != nullptr && common_syn != nullptr && syn != nullptr) {
-							// Zapisywanie do html i xml
-							save_to_xml(word, type, scope, common_syn, syn, "zadanie2");
-							//save_to_html(word, type, scope, common_syn, syn, "zadanie2", 1);
-						}
+		bool found_meanings = false;
+		bool meanings_start = false;
+		bool is_scope = false;
+		bool in_scope = false;
+		bool is_synonym = false;
+		bool is_common_synonym = false;
 
-						// Wchodzi g³ebiej dla noun
-						if(*type == "noun") {
-							for (unsigned int i = 0; i<syn->size(); i++) {
-								deep_words_tmp.push_back(syn->at(i));
-							}
-							for (unsigned int i = 0; i<common_syn->size(); i++) {
-								deep_words_tmp.push_back(common_syn->at(i));
-							}
-						}
+		int meaning_count = -1;
 
-						// Usuwanie zmiennych ze wskaznikow
+		while (getline(i_file, line)) {
+			// Przetwarzanie meanings
+			if (found_meanings == false) {
+				if (meanings_start) {
+					if (regex_search(line, r_meaning_list)) {
+						std::size_t pos_start = line.find("<strong class=\"ttl\">");
+						std::size_t pos_end = line.find("</strong>", pos_start);
+						pos_start += 20;
+						pos_end;
+						std::size_t pos_len = pos_end - pos_start;
+						std::string str = line.substr(pos_start, pos_len);
+						// Push common synonim
+						meanings->push_back(str);
+					}
+					else if (regex_search(line, r_meanings_end))
+						found_meanings = true;
+				}
+				else if (regex_search(line, r_meanings_start))
+					meanings_start = true;
+			}// - Przetwarzanie meanings
+			// Szukanie ca³ego scope
+			else {
+				// Przetwarzanie scope
+				if (is_scope) {
+					// Zamkniecie scope
+					if (regex_search(line, r_scope_end)) {
+						is_scope = false;
+						// Zapisywanie
+						save_to_html(word, meanings->at(++meaning_count), type, common_syn, syn, "zadanie2", 1);
+						// Usuwanie zmiennych
 						delete type;
-						delete scope;
 						delete common_syn;
 						delete syn;
-
-						is_scope = false;
+					} // - Zamkniecie scope
+					else {
+						// Przetwarzanie synonimow
+						if (in_scope) {
+							if (is_common_synonym) {
+								std::size_t pos_start = line.find("<span class=\"text\">");
+								std::size_t pos_end = line.find("</span>", pos_start);
+								pos_start += 19;
+								std::size_t pos_len = pos_end - pos_start;
+								std::string str = line.substr(pos_start, pos_len);
+								// Push common synonim
+								common_syn->push_back(str);
+								is_common_synonym = false;
+								in_scope = false;
+							}
+							if (is_synonym) {
+								std::size_t pos_start = line.find("<span class=\"text\">");
+								std::size_t pos_end = line.find("</span>", pos_start);
+								pos_start += 19;
+								pos_end;
+								std::size_t pos_len = pos_end - pos_start;
+								std::string str = line.substr(pos_start, pos_len);
+								//Push synonim
+								syn->push_back(str);
+								is_synonym = false;
+								in_scope = false;
+							}
+						}// - Przetwarzanie synonimow
+						// Szukanie pocz¹tku synonimów i typu
+						else {
+							if (regex_search(line, r_common_synonym)) {
+								is_common_synonym = true;
+								in_scope = true;
+							}
+							else if (regex_search(line, r_synonym)) {
+								is_synonym = true;
+								in_scope = true;
+							}
+							else if (regex_search(line, r_type)) {
+								std::size_t pos_start = line.find("<em class=\"txt\">");
+								std::size_t pos_end = line.find("</em>", pos_start);
+								pos_start += 16;
+								pos_end;
+								std::size_t pos_len = pos_end - pos_start;
+								std::string str = line.substr(pos_start, pos_len);
+								*type = str;
+							}
+						}// - Szukanie pocz¹tku synonimów i typu
 					}
-
-					if (regex_search(line, pattern_scopes) && is_scopes == false) {
-						is_scopes = true;
-					}
-
-					if(regex_search (line, pattern_scope_start)) {
+				}
+				else {
+					if (regex_search(line, r_scope_start)) {
 						is_scope = true;
-						// Tworzy nowe zmienne dla wskaznikow
 						type = new string;
-						scope = new string;
 						common_syn = new vector <string>;
 						syn = new vector <string>;
-
 					}
+				}
+			}// - Szukanie ca³ego scope
 
-					if (is_scopes) {
-						if (regex_search(line, pattern_scopes_list)) {
-							std::size_t pos_start = line.find("<strong class=\"ttl\">");
-							std::size_t pos_end = line.find("</strong>", pos_start);
-
-							pos_start += 20;
-							pos_end;
-
-							std::size_t pos_len = pos_end - pos_start;
-							std::string str = line.substr(pos_start, pos_len);
-
-							// Push common synonim
-							scopes.push_back(str);
-						}
-					}
-		
-					if(is_scope) {
-						if(is_synonym) {
-							std::size_t pos_start = line.find("<span class=\"text\">");  
-                            std::size_t pos_end = line.find("</span>", pos_start);
-
-							pos_start += 19;
-							pos_end;
-
-							std::size_t pos_len = pos_end - pos_start;
-                            std::string str = line.substr (pos_start, pos_len);
-
-							//Push synonim
-							syn->push_back(str);
-
-							is_synonym = false;
-						}
-
-						if(is_common_synonym) {
-							std::size_t pos_start = line.find("<span class=\"text\">");  
-                            std::size_t pos_end = line.find("</span>", pos_start);
-
-							pos_start += 19;
-							pos_end;
-
-							std::size_t pos_len = pos_end - pos_start;
-                            std::string str = line.substr (pos_start, pos_len);
-
-							// Push common synonim
-							common_syn->push_back(str);
-
-							is_common_synonym = false;
-						}
-
-						// Sprawdzamy typ, scope, synonim, i commonsynonim
-						if(regex_search (line, pattern_common_synonym)) {
-							is_common_synonym = true;
-						} 
-						else if(regex_search (line, pattern_synonym)) {
-							is_synonym = true;
-						}
-						
-
-						if(regex_search (line, pattern_type)) {
-							std::size_t pos_start = line.find("<em class=\"txt\">");  
-                            std::size_t pos_end = line.find("</em>", pos_start);
-
-							pos_start += 16;
-							pos_end;
-
-							std::size_t pos_len = pos_end - pos_start;
-                            std::string str = line.substr (pos_start, pos_len);
-
-							*type = str;
-						}
-
-						if(regex_search (line, pattern_scope_name)) {
-							std::size_t pos_start = line.find("<strong class=\"ttl\">");  
-                            std::size_t pos_end = line.find("</strong>", pos_start);
-
-							pos_start += 20;
-							pos_end;
-
-							std::size_t pos_len = pos_end - pos_start;
-                            std::string str = line.substr (pos_start, pos_len);
-
-							*scope = str;
-						}
-					
-					} 
-
-                }
-                i_file.close();
-        }
-        else {
-			cout << "Unable to open file for word: " << word << endl;
-			save_log("Unable to open file for word: " + word, currentDateTime());
 		}
+		delete meanings;
+	}
+	else {
+		cout << "Unable to open file for word: " << word << endl;
+		save_log("Unable to open file for word: " + word, currentDateTime());
+	}
 }
 
 ///
