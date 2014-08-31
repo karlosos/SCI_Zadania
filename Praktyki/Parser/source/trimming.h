@@ -242,6 +242,8 @@ void trim_thesaurus(string word) {
 /// @param int deep
 ///
 void trim_thesaurus(string word, int deep) {
+	if (word == "con")
+		return;
 	// Input file
 	string i_path = "thesaurus\\" + word + ".txt";
 	ifstream i_file(i_path);
