@@ -380,7 +380,12 @@ void trim_wordnik(string word) {
 		regex pattern_end( "</ol>" );
 		regex pattern_eq_start( "equivalents" );
 		regex pattern_syn( "<span data-definition-for=\"" );
-		regex pattern_wikisaurus("See Wikisaurus:");
+
+		regex p_see_wikisaurus("See Wikisaurus:");
+		regex p_see_also_wikisaurus("see also Wikisaurus:");
+		regex p_see_also_wikisaurus_upp("See also Wikisaurus:");
+		regex p_wikisaurus("Wikisaurus:");
+		regex p_appendix("see Appendix:");
 
 		bool is_scope = false;
 		bool is_syn = false;
@@ -418,24 +423,37 @@ void trim_wordnik(string word) {
 			}
 
 			if(is_scope) {
-
 				if ( regex_search (line, pattern_syn) ) {
-
 					std::size_t pos_start = line.find("<span data-definition-for=\"");  
 					std::size_t pos_end = line.find("\">", pos_start+27);
 
-					if(regex_search (line, pattern_wikisaurus)) {
+					// Usuwanie artefaktów z tekstu, proponuje zakomentowac wszystko oprocz ostatniego else
+					// i zrobic to recznie w programie tekstowym
+					if(regex_search (line, p_see_wikisaurus)) {
 						pos_start = line.find("See Wikisaurus:");  
 						pos_start += 15;
-					} else {
+					} 
+					else if (regex_search (line, p_wikisaurus)) {
+						pos_start = line.find("Wikisaurus:");  
+						pos_start += 11;
+					}
+					else if (regex_search (line, p_see_also_wikisaurus)) {
+						pos_start = line.find("see also Wikisaurus:");  
+						pos_start += 20;
+					}
+					else if (regex_search (line, p_see_also_wikisaurus_upp)) {
+						pos_start = line.find("See also Wikisaurus:");  
+						pos_start += 20;
+					}
+					else if (regex_search (line, p_appendix)) {
+						pos_start = line.find("see Appendix:");  
+						pos_start += 13;
+					}
+					else {
 						pos_start += 27;
 					}
-
-					pos_end;
-
 					std::size_t pos_len = pos_end - pos_start;
 					std::string str = line.substr (pos_start, pos_len);
-
 					//Push synonim
 					syn->push_back(str);    
 				}					
@@ -452,95 +470,4 @@ void trim_wordnik(string word) {
 	delete syn;
 
 }
-
-///
-/// wydobywa synonimy z plikow [do unowoczesnienia]
-///
-/// @param string word - slowo dla ktorego szukamy synonimow
-///
-vector <string> t_trim_wordnik_syn(string word) {
-	string line;
-	// Input file
-	string i_path = "t_wordnik\\t_" + word + "_syn.txt";
-	ifstream i_file (i_path);
-
-	//Returned vector
-	vector <string> synonyms;
-
-	if (i_file.is_open())
-	{
-		regex pattern( "<span data-definition-for=\"" );
-
-		while ( getline (i_file,line) )
-		{
-			if ( regex_search (line, pattern) ) {
-
-				std::size_t pos_start = line.find("<span data-definition-for=\"");  
-				std::size_t pos_end = line.find("\">", pos_start+27);
-
-				pos_start += 27;
-				pos_end;
-
-				std::size_t pos_len = pos_end - pos_start;
-				std::string str = line.substr (pos_start, pos_len);
-
-				synonyms.push_back(str);
-				//o_file << str+ "\n";        
-			}
-		}
-		i_file.close();
-		//o_file.close();
-	}
-	else {
-		cout << "Unable to open file for word: " << word << endl;
-		save_log("Unable to open file for word: " + word, currentDateTime());
-	}
-
-	return synonyms;
-}
-
-///
-/// wydobywa equivalenty z plikow [do unowoczesnienia]
-///
-/// @param string word - slowo dla ktorego szukamy synonimow
-///
-vector <string> t_trim_wordnik_eq(string word) {
-	string line;
-	// Input file
-	string i_path = "t_wordnik\\t_" + word + "_eq.txt";
-	ifstream i_file (i_path);
-
-	//Returned vector
-	vector <string> equivalents;
-
-	if (i_file.is_open())
-	{
-		regex pattern( "<span data-definition-for=\"" );
-
-		while ( getline (i_file,line) )
-		{
-			if ( regex_search (line, pattern) ) {
-
-				std::size_t pos_start = line.find("<span data-definition-for=\"");  
-				std::size_t pos_end = line.find("\">", pos_start+27);
-
-				pos_start += 27;
-				pos_end;
-
-				std::size_t pos_len = pos_end - pos_start;
-				std::string str = line.substr (pos_start, pos_len);
-
-				equivalents.push_back(str);    
-			}
-		}
-		i_file.close();
-	}
-	else {
-		cout << "Unable to open file for word: " << word << endl;
-		save_log("Unable to open file for word: " + word, currentDateTime());
-	}
-
-	return equivalents;
-}
-
 #endif //TRIMMING_H

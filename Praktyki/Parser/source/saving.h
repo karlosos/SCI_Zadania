@@ -72,6 +72,14 @@ void scope_add(string scope, string* type) {
 	// Je¿eli nie ma ; i , to rób
 	if (comma!=std::string::npos && semicolon!=std::string::npos) {
 		scope_words_corrupt.push_back(scope);
+		while ((pos = scope.find_first_of(",;", prev_pos)) != std::string::npos)
+		{
+			if (pos > prev_pos)
+				scope_words_tmp.push_back(scope.substr(prev_pos, pos-prev_pos));
+			prev_pos= pos+1;
+		}
+		if (prev_pos < scope.length())
+			scope_words_tmp.push_back(scope.substr(prev_pos, std::string::npos));
 	} else { // jezeli jest i ; i ,
 		while ((pos = scope.find_first_of(",;", prev_pos)) != std::string::npos)
 		{
@@ -128,42 +136,45 @@ void save_to_xml(string word, string scope, string* type, vector<string>* common
 	string xml_synonym = "";
 
 	// Zapisywanie kodu xml
-	if (common_syn_weight > 0) {
-		out_xml << xml_word_start;
-		out_xml << xml_keyword;
-		out_xml << "\t\t\t<weight>80</weight> \n";
-		out_xml << xml_type;
-		out_xml << xml_scope;
-		out_xml << xml_synonyms_start;
-		for (int i=0; i<common_syn_weight; i++) {
-			if (i>0 && i<common_syn_weight) 
-				out_xml << ", ";
-			xml_synonym = common_syn->at(i);
-			out_xml << xml_synonym;
-			xml_synonym = "";
+	if (*type == "noun" || *type == "verb" || *type == "adj") {
+		if (common_syn_weight > 0) {
+			out_xml << xml_word_start;
+			out_xml << xml_keyword;
+			out_xml << "\t\t\t<weight>80</weight> \n";
+			out_xml << xml_type;
+			out_xml << xml_scope;
+			out_xml << xml_synonyms_start;
+			for (int i=0; i<common_syn_weight; i++) {
+				if (i>0 && i<common_syn_weight) 
+					out_xml << ", ";
+				xml_synonym = common_syn->at(i);
+				out_xml << xml_synonym;
+				xml_synonym = "";
+			}
+			out_xml << xml_synonyms_end;
+			out_xml << xml_word_end;
 		}
-		out_xml << xml_synonyms_end;
-		out_xml << xml_word_end;
-	}
 
-	if (syn_weight > 0) {
-		out_xml << xml_word_start;
-		out_xml << xml_keyword;
-		out_xml << "\t\t\t<weight>40</weight> \n";
-		out_xml << xml_type;
-		out_xml << xml_scope;
-		out_xml << xml_synonyms_start;
-		for (int i=0; i<syn_weight; i++) {
-			if (i>0 && i<syn_weight) 
-				out_xml << ", ";
-			xml_synonym = syn->at(i);
-			out_xml << xml_synonym;
-			xml_synonym = "";
+		if (syn_weight > 0) {
+			out_xml << xml_word_start;
+			out_xml << xml_keyword;
+			out_xml << "\t\t\t<weight>40</weight> \n";
+			out_xml << xml_type;
+			out_xml << xml_scope;
+			out_xml << xml_synonyms_start;
+			for (int i=0; i<syn_weight; i++) {
+				if (i>0 && i<syn_weight) 
+					out_xml << ", ";
+				xml_synonym = syn->at(i);
+				out_xml << xml_synonym;
+				xml_synonym = "";
+			}
+			out_xml << xml_synonyms_end;
+			out_xml << xml_word_end;
 		}
-		out_xml << xml_synonyms_end;
-		out_xml << xml_word_end;
+	} else {
+		int i = 0;
 	}
-
 	out_xml.close();
 }
 
@@ -243,53 +254,55 @@ void save_to_html(string word, string scope, string* type,vector<string>* common
 	string html_synonyms_end = "</td> \n";
 	string html_synonym = "";
 
-	// Zapisywanie kodu xml
-	if (common_syn_weight > 0) {
-		out_html << html_word_start;
-		out_html << html_keyword;
-		out_html << "\t \t <td id=\"weight\">80</td> \n";
-		out_html << html_type;
-		out_html << html_scope;
-		out_html << html_synonyms_start;
-		for (int i=0; i<common_syn_weight; i++) {
-			if (i>0) 
-				out_html << ", ";
-			html_synonym = common_syn->at(i);
-			out_html << html_synonym;
-			html_synonym = "";
+	if (*type == "noun" || *type == "verb" || *type == "adj") {
+		// Zapisywanie kodu xml
+		if (common_syn_weight > 0) {
+			out_html << html_word_start;
+			out_html << html_keyword;
+			out_html << "\t \t <td id=\"weight\">80</td> \n";
+			out_html << html_type;
+			out_html << html_scope;
+			out_html << html_synonyms_start;
+			for (int i=0; i<common_syn_weight; i++) {
+				if (i>0) 
+					out_html << ", ";
+				html_synonym = common_syn->at(i);
+				out_html << html_synonym;
+				html_synonym = "";
+			}
+			out_html << html_synonyms_end;
+			out_html << html_word_end;
 		}
-		out_html << html_synonyms_end;
-		out_html << html_word_end;
-	}
 
-	if (syn_weight > 0) {
-		out_html << html_word_start;
-		out_html << html_keyword;
-		out_html << "\t \t <td id=\"weight\">40</td> \n";
-		out_html << html_type;
-		out_html << html_scope;
-		out_html << html_synonyms_start;
-		for (int i=0; i<syn_weight; i++) {
-			if (i>0) 
-				out_html << ", ";
-			html_synonym = syn->at(i);
-			out_html << html_synonym;
-			html_synonym = "";
+		if (syn_weight > 0) {
+			out_html << html_word_start;
+			out_html << html_keyword;
+			out_html << "\t \t <td id=\"weight\">40</td> \n";
+			out_html << html_type;
+			out_html << html_scope;
+			out_html << html_synonyms_start;
+			for (int i=0; i<syn_weight; i++) {
+				if (i>0) 
+					out_html << ", ";
+				html_synonym = syn->at(i);
+				out_html << html_synonym;
+				html_synonym = "";
+			}
+			out_html << html_synonyms_end;
+			out_html << html_word_end;
 		}
-		out_html << html_synonyms_end;
-		out_html << html_word_end;
-	}
-	out_html.close();
+		out_html.close();
 
-	if (previous_scope != scope) {
-		previous_scope = scope;
-		scope_add(scope, type);
-		scope_clean();
-		scope_sort();
-		scope_save(word);
-		scope_words.clear();
-		scope_words_tmp.clear();
-		scope_type = "";
+		if (previous_scope != scope) {
+			previous_scope = scope;
+			scope_add(scope, type);
+			scope_clean();
+			scope_sort();
+			scope_save(word);
+			scope_words.clear();
+			scope_words_tmp.clear();
+			scope_type = "";
+		}
 	}
 }
 

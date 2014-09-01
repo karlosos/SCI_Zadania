@@ -9,7 +9,6 @@
 #include <time.h>
 #include <Urlmon.h>
 #include <regex>
-#include <windows.h> // Sprawdzic
 #include <direct.h>
 #include <algorithm>
 
