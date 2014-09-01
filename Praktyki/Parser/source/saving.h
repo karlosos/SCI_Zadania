@@ -5,6 +5,55 @@ void scope_save_xml(string word, string scope);
 void scope_save_html(string word, string scope);
 void scope_save_corrupt_xml(string word, string scope);
 
+
+void post_process( string filename ) {
+		string input_file = filename;
+		string output_file = filename;
+		output_file += "_post";
+		create_xml(output_file);
+		input_file += ".xml";
+		output_file += ".xml";
+
+		string line;
+		string p_see_wikisaurus("See Wikisaurus:");
+
+		std::size_t pos_start = line.find("<span data-definition-for=\"");  
+ 		std::size_t pos_end = line.find("\">", pos_start+27);
+
+		std::ofstream out;
+		out.open(output_file, std::ios::app);
+		ifstream i_file (input_file);
+
+		int n = 0;
+		if (i_file.is_open()) {
+			while ( getline (i_file,line)) {
+					str_replace(line, "&amp", "&amp;");
+					str_replace(line, "&", "&amp;");
+					str_replace(line, "&", "&amp;");
+
+					str_replace(line, "see also Wikisaurus:", "");
+					str_replace(line, "Wikisaurus:", "");
+					str_replace(line, "See also Wikisaurus:", "");
+					//str_replace(line, "<er>", "");
+					//str_replace(line, "</er&gt", "");
+					//str_replace(line, "&quot", "");
+					str_replace(line, "see Appendix:", "");
+
+					line += "\n";
+					out << line;
+					cout << "Line: " + to_string(long double(n++))  + "\n";
+			}
+			i_file.close();
+			out.close();
+		} else {
+			// Cout
+		}
+
+		output_file = filename;
+		output_file += "_post";
+		close_xml(output_file);
+}
+
 ///
 /// Zapisuje scope do plików
 ///

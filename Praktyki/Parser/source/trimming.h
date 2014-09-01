@@ -381,12 +381,6 @@ void trim_wordnik(string word) {
 		regex pattern_eq_start( "equivalents" );
 		regex pattern_syn( "<span data-definition-for=\"" );
 
-		regex p_see_wikisaurus("See Wikisaurus:");
-		regex p_see_also_wikisaurus("see also Wikisaurus:");
-		regex p_see_also_wikisaurus_upp("See also Wikisaurus:");
-		regex p_wikisaurus("Wikisaurus:");
-		regex p_appendix("see Appendix:");
-
 		bool is_scope = false;
 		bool is_syn = false;
 		bool is_eq = false;
@@ -427,31 +421,8 @@ void trim_wordnik(string word) {
 					std::size_t pos_start = line.find("<span data-definition-for=\"");  
 					std::size_t pos_end = line.find("\">", pos_start+27);
 
-					// Usuwanie artefaktów z tekstu, proponuje zakomentowac wszystko oprocz ostatniego else
-					// i zrobic to recznie w programie tekstowym
-					if(regex_search (line, p_see_wikisaurus)) {
-						pos_start = line.find("See Wikisaurus:");  
-						pos_start += 15;
-					} 
-					else if (regex_search (line, p_wikisaurus)) {
-						pos_start = line.find("Wikisaurus:");  
-						pos_start += 11;
-					}
-					else if (regex_search (line, p_see_also_wikisaurus)) {
-						pos_start = line.find("see also Wikisaurus:");  
-						pos_start += 20;
-					}
-					else if (regex_search (line, p_see_also_wikisaurus_upp)) {
-						pos_start = line.find("See also Wikisaurus:");  
-						pos_start += 20;
-					}
-					else if (regex_search (line, p_appendix)) {
-						pos_start = line.find("see Appendix:");  
-						pos_start += 13;
-					}
-					else {
-						pos_start += 27;
-					}
+					pos_start += 27;
+
 					std::size_t pos_len = pos_end - pos_start;
 					std::string str = line.substr (pos_start, pos_len);
 					//Push synonim

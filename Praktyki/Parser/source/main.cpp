@@ -96,6 +96,7 @@ int main () {
 		close_xml("zadanie2");
 		close_html("zadanie2");
 		close_xml("zadanie2_corrupt");
+		post_process("zadanie2");
 	} 
 
 	////////////////////////////////////////////////////
@@ -108,6 +109,7 @@ int main () {
 		create_log(currentDateTime());
 		create_html_old("zadanie1");
 		create_xml("zadanie1");
+
 
 		// Twprzy foldery
 		_mkdir("wordnik");
@@ -141,6 +143,8 @@ int main () {
 		close_log(currentDateTime());
 		close_xml("zadanie1");
 		close_html("zadanie1");
+
+		post_process("zadanie1");
 	}
 	return 0;
 }
