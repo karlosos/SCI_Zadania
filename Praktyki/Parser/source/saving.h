@@ -33,7 +33,6 @@ void post_process(string filename) {
 			while ( getline (i_file,line)) {
 					str_replace(line, "&amp", "&amp;");
 					str_replace(line, "&", "&amp;");
-					str_replace(line, "&", "&amp;");
 
 					str_replace(line, "see also Wikisaurus:", "");
 					str_replace(line, "Wikisaurus:", "");
