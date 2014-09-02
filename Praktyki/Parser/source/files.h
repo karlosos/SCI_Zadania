@@ -2,7 +2,9 @@
 #define FILES_H
 
 ///
-/// Tworzy logi
+/// Tworzy plik z logami
+///
+/// @param string date - aktualna data wywolana funkcja current_date()
 ///
 void create_log(string date) {
 	string file_name = date + "_log.txt";
@@ -14,7 +16,11 @@ void create_log(string date) {
 	log_name = file_name;
 }
 
-
+///
+/// Przy zakonczeniu aplikacji zapisuje date skonczenia
+///
+/// @param string date - aktualna data wywolana funkcja current_date()
+///
 void close_log(string date) {
 	std::ofstream out;
 	out.open(log_name, std::ios::app);
@@ -24,6 +30,8 @@ void close_log(string date) {
 
 ///
 /// Tworzy poczatek dokumentu html
+///
+/// @param string file_name Nazwa dokumentu ktory tworzymy
 ///
 void create_html(string file_name) {
 	//Output file
@@ -37,7 +45,11 @@ void create_html(string file_name) {
 }
 
 ///
-/// Tworzy poczatek dokumentu html dla zadania 1
+/// Tworzy poczatek dokumentu html (zadanie 1)
+///
+/// @param string file_name - nazwa pliku
+///
+/// Rozni sie od funkcji create_html() tym ze tworzy mniej kolumn
 ///
 void create_html_old(string file_name) {
 	//Output file
@@ -53,6 +65,8 @@ void create_html_old(string file_name) {
 ///
 /// Tworzy poczatek dokumentu xml
 ///
+/// @param string file_name - nazwa pliku
+///
 void create_xml(string file_name) {
 	//Output file
 	file_name = file_name + ".xml";
@@ -65,6 +79,8 @@ void create_xml(string file_name) {
 ///
 /// Tworzy domkniecia w dokumencie html
 ///
+/// @param string file_name - plik ktory domykamy
+///
 void close_html(string file_name) {
 	std::ofstream out;
 	file_name = file_name + ".html";
@@ -76,6 +92,8 @@ void close_html(string file_name) {
 
 ///
 /// Tworzy domkniecia w dokumencie xml
+///
+/// @param string file_name - plik ktory domykamy
 ///
 void close_xml(string file_name) {
 	std::ofstream out;

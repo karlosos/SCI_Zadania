@@ -5,7 +5,7 @@
 #include "scope.h"
 
 ///
-/// wydobywa slowa z wordnetcode
+/// Wydobywa slowa z wordnetcode
 ///
 void trim_wordnetcode() {
 	string line;
@@ -30,7 +30,7 @@ void trim_wordnetcode() {
 }
 
 ///
-/// wydobywa slowa z wiktionary
+/// Wydobywa slowa z wiktionary
 ///
 void trim_wiktionary() {
 	string line;
@@ -62,7 +62,7 @@ void trim_wiktionary() {
 }
 
 ///
-/// wydobywa slowa z thesaurusa
+/// Wydobywa slowa z thesaurusa
 ///
 /// @param string word - slowo ktore szukamy w thesaurusie
 ///
@@ -212,12 +212,14 @@ void trim_thesaurus(string word) {
 }
 
 ///
-/// wydobywa slowa z thesaurusa z ni¿szego poziomu
+/// Wydobywa slowa z thesaurusa z ni¿szego poziomu
 ///
 /// @param string word - slowo ktore szukamy w thesaurusie
 /// @param int deep
 ///
 void trim_thesaurus(string word, int deep) {
+	// To jest dla Windows 8
+	// con jest plikiem zastrzezonym przez system a znajduje sie w naszej bazie
 	if (word == "con")
 		return;
 	// Input file
@@ -357,9 +359,9 @@ void trim_thesaurus(string word, int deep) {
 }
 
 ///
-/// wydobywa slowa z wordnika
+/// Wydobywa slowa z wordnika
 ///
-/// @param string word - slowo ktore szukamy w thesaurusie
+/// @param string word - slowo ktore szukamy w wordniku
 ///
 void trim_wordnik(string word) {
 	string line;

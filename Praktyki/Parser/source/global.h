@@ -63,7 +63,7 @@ void sort_unique_words() {
 }
 
 ///
-/// Laczy i usuwa powtorzenia w kontenerach ze slowami
+/// Laczy i usuwa powtorzenia w kontenerach ze slowami deep
 ///
 void sort_deep_words() {
 	sort(deep_words_tmp.begin(), deep_words_tmp.end());
@@ -83,6 +83,13 @@ void sort_deep_words() {
 	o_file.close();
 }
 
+///
+/// Zastepuje wystapienie danego substringa innym stringiem w stringu
+///
+/// @param string &s - referencja do stringa ktory zmieniamy
+/// @param string &search - referencja do stringa ktorego szukamy
+/// @param string &replace - referencja do stringa ktory zamieniamy
+///
 void str_replace( string &s, const string &search, const string &replace ) 
 {
 	for( size_t pos = 0; ; pos += replace.length() ) 

@@ -2,8 +2,9 @@
 #define DOWNLOADING_H
 
 #include "saving.h"
+
 ///
-/// pobiera plik z wordnika
+/// Pobiera strone z wordnika
 ///
 /// @param string word - slowo dla ktorego pobieramy plik
 ///
@@ -34,7 +35,7 @@ void download_wordnik(string word) {
 }
 
 ///
-/// pobiera plik z thesaurusa
+/// Pobiera strone z thesaurusa
 ///
 /// @param string word - slowo dla ktorego pobieramy plik
 ///
@@ -65,7 +66,7 @@ void download_thesaurus(string word) {
 }
 
 ///
-/// pobiera plik z wordnetcode
+/// Pobiera baze slow z wordnetcode
 ///
 void download_wordnetcode() {
 	string log_word = "wordnetcode";
@@ -93,7 +94,7 @@ void download_wordnetcode() {
 }
 
 ///
-/// pobiera plik z wiktionary
+/// Pobiera baze slow z wiktionary
 ///
 void download_wiktionary() {   
 	string log_word = "wiktionary";

@@ -18,7 +18,9 @@ string log_name;
 #include "saving.h"
 
 int main () {
+	// Zmienna do okreslania ile procent slow wykonano
 	long double status = 0;
+	// Zmienna do okreslania zadania ktore program ma wykonac
 	int nr_zadania = 0;
 
 	while(nr_zadania != 1 && nr_zadania != 2) {
@@ -125,7 +127,7 @@ int main () {
 		// Sortuje i usuwa powtorzenia w kontenerze
 		sort_unique_words();
 
-		// Petla pobiera i parsuje kazde slowo
+		// Petla pobiera i parsuje kazde slowo words.size()
 		for (unsigned int i = 0; i < words.size(); i++) {
 			if (fileNotExists(words[i], "wordnik")) {
 				// Pobieramy i trimujemy dane slowo

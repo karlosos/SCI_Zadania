@@ -5,8 +5,12 @@ void scope_save_xml(string word, string scope);
 void scope_save_html(string word, string scope);
 void scope_save_corrupt_xml(string word, string scope);
 
-
-void post_process( string filename ) {
+///
+/// Funkcja usuwajaca "artefakty" z wynikowego pliku
+///
+/// @param string filename - plik ktory czyscimy
+///
+void post_process(string filename) {
 		string input_file = filename;
 		string output_file = filename;
 		output_file += "_post";
@@ -107,7 +111,8 @@ void scope_sort() {
 ///
 /// Dodaje scope do kontenera
 ///
-/// @string* scope
+/// @param string* scope
+/// @param string* type
 ///
 void scope_add(string scope, string* type) {
 	scope_words.clear();
@@ -142,10 +147,10 @@ void scope_add(string scope, string* type) {
 }
 
 ///
-///Zapisuje logi
+/// Zapisuje wiadomosc do pliku z logami
 ///
-///@param string message - wiadomosc
-///@param string date - data
+/// @param string message - wiadomosc
+/// @param string date - data
 ///
 void save_log(string message, string date) {
 	// Output plik index.html, otwieramy w formie dopisywania
@@ -158,11 +163,12 @@ void save_log(string message, string date) {
 ///
 /// Zapisuje dane do xml
 ///
-/// @string word - nazwa slowa
-/// @string* type - wskaznik na typ
-/// @string* scope - wskaznik na scope
-/// @vector<string>* common_syn - wskaznik na kontener common synonimow
-/// @vector<string>* syn - wskaznik na kontener pozostalych synonimow
+/// @param string word - nazwa slowa
+/// @param string* type - wskaznik na typ
+/// @param string scope - znaczenie slowa
+/// @param vector<string>* common_syn - wskaznik na kontener common synonimow
+/// @param vector<string>* syn - wskaznik na kontener pozostalych synonimow
+/// @param string filename - nazwa pliku
 ///
 void save_to_xml(string word, string scope, string* type, vector<string>* common_syn, vector<string>* syn, string file_name) {
 	// Output plik index.html, otwieramy w formie dopisywania
@@ -230,8 +236,9 @@ void save_to_xml(string word, string scope, string* type, vector<string>* common
 ///
 /// Zapisuje dane do xml
 ///
-/// @string word - nazwa slowa
-/// @vector<string>* syn - wskaznik na kontener pozostalych synonimow
+/// @param string word - nazwa slowa
+/// @param vector<string>* syn - wskaznik na kontener pozostalych synonimow
+/// @param int weight - waga (40 lub 80)
 ///
 void save_to_xml(string word, vector<string>* syn, int weight) {
 	// Output plik index.html, otwieramy w formie dopisywania
@@ -272,13 +279,15 @@ void save_to_xml(string word, vector<string>* syn, int weight) {
 }
 
 ///
-/// Zapisuje dane do xml
+/// Zapisuje dane do xml (slowa deep)
 ///
-/// @string word - nazwa slowa
-/// @string* type - wskaznik na typ
-/// @string* scope - wskaznik na scope
-/// @vector<string>* common_syn - wskaznik na kontener common synonimow
-/// @vector<string>* syn - wskaznik na kontener pozostalych synonimow
+/// @param string word - nazwa slowa
+/// @param string* type - wskaznik na typ
+/// @param string scope - wskaznik na scope
+/// @param vector<string>* common_syn - wskaznik na kontener common synonimow
+/// @param vector<string>* syn - wskaznik na kontener pozostalych synonimow
+/// @param string file_name - nazwa pliku
+/// @param int deep - Wstaw 1 jezeli chcesz wstawiac slowa deep
 ///
 void save_to_html(string word, string scope, string* type,vector<string>* common_syn, vector<string>* syn, string file_name, int deep){
 
@@ -358,8 +367,9 @@ void save_to_html(string word, string scope, string* type,vector<string>* common
 ///
 /// Zapisuje dane do xml
 ///
-/// @string word - nazwa slowa
-/// @vector<string>* syn - wskaznik na kontener pozostalych synonimow
+/// @param string word - nazwa slowa
+/// @param vector<string>* syn - wskaznik na kontener pozostalych synonimow
+/// @param int weight - waga synonimow
 ///
 void save_to_html(string word, vector<string>* syn, int weight){
 	// Output plik index.html, otwieramy w formie dopisywania
@@ -402,7 +412,7 @@ void save_to_html(string word, vector<string>* syn, int weight){
 /// Zapisuje scope do html
 ///
 /// @param string word - s³owo które wpisujemy
-/// @param string scope
+/// @param string scope - znaczenie ktore zapisujemy
 ///
 void scope_save_html(string word, string scope) {
 	// Output plik index.html, otwieramy w formie dopisywania
@@ -435,7 +445,7 @@ void scope_save_html(string word, string scope) {
 /// Zapisuje scope do xml
 ///
 /// @param string word - s³owo które wpisujemy
-/// @param string scope
+/// @param string scope - znaczenie ktore zapisujemy
 ///
 void scope_save_xml(string word, string scope) {
 	// Output plik index.html, otwieramy w formie dopisywania
@@ -464,6 +474,12 @@ void scope_save_xml(string word, string scope) {
 	out_xml.close();
 }
 
+///
+/// Zapisuje slowa i znaczenia sprawiajace problemy do pliku
+///
+/// @param string word - slowo ktore zapisujemy
+/// @param string scope - znaczenie ktore zapisujemy
+///
 void scope_save_corrupt_xml(string word, string scope) {
 	cout << "Dodano wiersz corrupt. Word: " + word + " scope: " + scope + currentDateTime() << endl;
 	save_log("Dodano wiersz corrupt. Word: " + word + " scope: " + scope, currentDateTime());
@@ -494,6 +510,13 @@ void scope_save_corrupt_xml(string word, string scope) {
 	out_xml.close();
 }
 
+///
+/// Sprawdza czy plik nie istnieje
+///
+/// @param string word - plik ktorego szukamy
+/// @param string folder - folder w ktorym szukamy pliku
+/// @return bool - prawda jezeli nie ma pliku
+///
 bool fileNotExists(string word, string folder) {
 	// Input file
 	string i_path = folder + "\\" + word + ".txt";
@@ -509,6 +532,12 @@ bool fileNotExists(string word, string folder) {
 	}
 }
 
+///
+/// Sprawdza czy plik nie istnieje
+///
+/// @param string word - plik ktorego szukamy
+/// @return bool - prawda jezeli nie ma pliku
+///
 bool fileNotExists(string word) {
 	// Input file
 	string i_path = word + ".txt";
