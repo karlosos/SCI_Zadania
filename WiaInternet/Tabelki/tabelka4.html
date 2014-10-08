@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Tabelki</title>
+        <style>
+            
+            
+            table {
+                border-spacing: 1 px;
+                cellspacing:0;
+                width: 400px;
+                font-family: Verdana;
+                border-collapse: collapse;
+                color:  #404040;
+                border: solid 2px black;
+                
+            }
+           
+            
+            tr {
+                border: 1px dotted black;
+                
+            }
+            
+            th {
+                font-size: 12pt;
+            }
+            
+            td {
+                text-align: right;
+                background-color: #fafaea;
+                font-size: 0.7em;
+            }
+            
+            thead {
+                background-color: #CCCC99;
+                border: solid 2px black;
+            }
+            
+            .odd {
+            }
+            
+            .even {
+            }
+            
+            .best {
+                border: solid 3px green;
+            }
+            
+            .worst {
+                 border: solid 3px red;
+            }
+            
+            tfoot {
+                background-color: rgb(120,120,120);
+                font-weight: bold;
+            }
+            
+            .middle {
+                text-align: center;
+            }
+            
+            caption {
+                caption-side: bottom;
+                color: black;
+            }
+            
+            a {
+                color: green;
+            }
+            
+            // mailto nie da rady zrobic visited, chyba ze uzymy js
+            a:visited {
+                color: black;
+            }
+            a:hover {
+                color: #55ff22;
+            }
+        </style>
+    </head> 
+    
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Pracownicy</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="odd">
+                    <td class="middle"><a href="mailto:someone123@example.com">Jan Kowalski</a></td>
+                    <td>Dyrektor</td>
+                    <td>666-666-666</td>
+                </tr>
+                
+                <tr class="even">
+                    <td class="middle"><a href="mailto:someone32@example.com">Anna Kowalska</a></td>
+                    <td>Poddyrektor</td>
+                    <td>666-666-666</td>
+                </tr>
+                
+                <tr class="odd">
+                    <td class="middle"><a href="mailto:someone234@example.com">Jaś Fasola</a></td>
+                    <td>Konserwator</td>
+                    <td>666-666-666</td>
+                </tr>
+            </tbody>
+        </table>  
+          
+    </body>
+</html>
