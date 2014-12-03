@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Papier - Kamie&#x144; - No&#x17c;yce"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="liczbaTurSlider" alignment="0" max="32767" attributes="0"/>
+                  <Component id="ButtonsPanel" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="ImiePanel" min="-2" max="-2" attributes="0"/>
+                          <Component id="ScoreInfoPanel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="StatystykiGracza" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="StatystykiGracza1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="jProgressBar" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="ImiePanel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="liczbaTurSlider" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="ButtonsPanel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="ScoreInfoPanel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="StatystykiGracza" min="-2" max="-2" attributes="0"/>
+                  <Component id="StatystykiGracza1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jProgressBar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="89" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JSlider" name="liczbaTurSlider">
+      <Properties>
+        <Property name="majorTickSpacing" type="int" value="10"/>
+        <Property name="minimum" type="int" value="1"/>
+        <Property name="minorTickSpacing" type="int" value="1"/>
+        <Property name="paintLabels" type="boolean" value="true"/>
+        <Property name="paintTicks" type="boolean" value="true"/>
+        <Property name="snapToTicks" type="boolean" value="true"/>
+        <Property name="value" type="int" value="10"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JPanel" name="ScoreInfoPanel">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="wyborKomputeraLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="punktyZawodnikaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="punktyKomputeraLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="wyborZawodnikaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="wyborKomputeraLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="wyborZawodnikaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="punktyZawodnikaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="punktyKomputeraLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="punktyKomputeraLabel">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="2"/>
+            <Property name="text" type="java.lang.String" value="???"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="wyborKomputeraLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="???"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="punktyZawodnikaLabel">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="2"/>
+            <Property name="text" type="java.lang.String" value="???"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Punkty komputera:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Punkty zawodnika:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Wyb&#xf3;r komputera:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Wyb&#xf3;r zawodnika:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="wyborZawodnikaLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="???"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="ImiePanel">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="imieLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="imieTextField" min="-2" pref="92" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="imieTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="imieLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="imieLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Twoje imie:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="imieTextField">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Zawodnik"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="ButtonsPanel">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="startButton" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="papierButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="kamienButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="nozyceButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="startButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="papierButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="kamienButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nozyceButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="papierButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Papier"/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="papierButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="kamienButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Kamie&#x144;"/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kamienButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="nozyceButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="No&#x17c;yce"/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nozyceButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="startButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Start"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="startButtonActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="StatystykiGracza">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="StatystykiTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="StatystykiPapier" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="GraczStatystykiPapier" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="StatystykiKamien" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="GraczStatystykiKamien" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="StatystykiNozyce" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="GraczStatystykiNozyce" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="StatystykiTitle" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="StatystykiPapier" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="GraczStatystykiPapier" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="StatystykiKamien" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="GraczStatystykiKamien" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="StatystykiNozyce" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="GraczStatystykiNozyce" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="StatystykiTitle">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Gracz"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="StatystykiPapier">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Papier:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="StatystykiKamien">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Kamie&#x144;:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="StatystykiNozyce">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="No&#x17c;yce"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="GraczStatystykiPapier">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="???"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="alignmentY" type="float" value="0.3"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="GraczStatystykiKamien">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="???"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="alignmentY" type="float" value="0.3"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="GraczStatystykiNozyce">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="???"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="alignmentY" type="float" value="0.3"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="StatystykiGracza1">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="StatystykiTitle1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="StatystykiPapier1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="KomputerStatystykiPapier" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="StatystykiKamien1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="KomputerStatystykiKamien" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="StatystykiNozyce1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="KomputerStatystykiNozyce" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="StatystykiTitle1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="StatystykiPapier1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="KomputerStatystykiPapier" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="StatystykiKamien1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="KomputerStatystykiKamien" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="StatystykiNozyce1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="KomputerStatystykiNozyce" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="StatystykiTitle1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Gracz"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="StatystykiPapier1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Papier:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="StatystykiKamien1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Kamie&#x144;:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="StatystykiNozyce1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="No&#x17c;yce"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="KomputerStatystykiPapier">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="???"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="alignmentY" type="float" value="0.3"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="KomputerStatystykiKamien">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="???"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="alignmentY" type="float" value="0.3"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="KomputerStatystykiNozyce">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="???"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="alignmentY" type="float" value="0.3"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JProgressBar" name="jProgressBar">
+    </Component>
+  </SubComponents>
+</Form>
