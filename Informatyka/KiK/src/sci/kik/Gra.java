@@ -79,9 +79,10 @@ public class Gra {
             }
             sprawdzStan();
             
-            if(graZAI) {
-                int x = graczAI.ruch(plansza)[0];
-                int y = graczAI.ruch(plansza)[1];
+            if(czyAktywna && graZAI) {
+                int[] ruchAI = graczAI.ruch(plansza);
+                int x = ruchAI[0];
+                int y = ruchAI[1];
                 plansza[x][y] = graczAI.getFigura();
                 ostatniRuch = graczAI.getFigura();
                 sprawdzStan();
