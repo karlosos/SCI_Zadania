@@ -8,6 +8,7 @@ package sci.kik;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
+import java.util.Random;
 
 /**
  *
@@ -66,9 +67,18 @@ public class Gra {
         czyAktywna = true;
         this.graZAI = true;
 
-        if (graczAI.getFigura() == 1) {
-            ruchAI();
-        }
+        // Losuje czy ma zaczynać AI czy gracz
+//        Random r = new Random();
+//        int los = r.nextInt(2);
+//        if (los == 1) {
+//            ruchAI();
+//        }
+        
+        // Jeżeli AI jest kółkiem to zaczyna
+//        if (graczAI.getFigura() == 1) {
+//            ruchAI();
+//        }
+        
         System.out.println("Nowa gra");
     }
 
@@ -76,8 +86,8 @@ public class Gra {
         if (czyAktywna && plansza[wiersz][kolumna] == 0) {
             if (this.plansza[wiersz][kolumna] == 0) {
                 if (ostatniRuch == 0) {
-                    this.plansza[wiersz][kolumna] = 1;
-                    ostatniRuch = 1;
+                    this.plansza[wiersz][kolumna] = gracz1.getFigura();
+                    ostatniRuch = gracz1.getFigura();
                 } else if (ostatniRuch == 2) {
                     this.plansza[wiersz][kolumna] = 1;
                     ostatniRuch = 1;
