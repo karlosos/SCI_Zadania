@@ -21,6 +21,8 @@ public class Okno extends javax.swing.JFrame {
     private Gra gra;
     private javax.swing.JLabel[][] plansza;
     
+    final private String symbol1 = "Krzyżyk";
+    final private String symbol2 = "Kółko";
     
     /**
      * Creates new form NewJFrame
@@ -55,6 +57,8 @@ public class Okno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -65,7 +69,27 @@ public class Okno extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        buttonNowaGra = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel2Players = new javax.swing.JPanel();
+        buttonNowaGra2Players = new javax.swing.JButton();
+        jLabelGracz1 = new javax.swing.JLabel();
+        jTextFieldGracz1 = new javax.swing.JTextField();
+        jLabelGracz2 = new javax.swing.JLabel();
+        jTextFieldGracz2 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jRadioButtonKolko2p = new javax.swing.JRadioButton();
+        jRadioButtonKrzyzyk2p = new javax.swing.JRadioButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabelSymbol2P = new javax.swing.JLabel();
+        jPanelAI = new javax.swing.JPanel();
+        buttonNowaGraAI = new javax.swing.JButton();
+        jLabelGraczAI = new javax.swing.JLabel();
+        jTextFieldGraczAI = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jRadioButtonKolkoAI = new javax.swing.JRadioButton();
+        jRadioButtonKrzyzykAI = new javax.swing.JRadioButton();
+        jLabel14 = new javax.swing.JLabel();
+        jLabelSymbolAI = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -118,50 +142,269 @@ public class Okno extends javax.swing.JFrame {
         jLabel9.setToolTipText("");
         jPanel1.add(jLabel9);
 
-        buttonNowaGra.setText("Nowa gra");
-        buttonNowaGra.addActionListener(new java.awt.event.ActionListener() {
+        buttonNowaGra2Players.setText("Nowa gra");
+        buttonNowaGra2Players.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonNowaGraActionPerformed(evt);
+                buttonNowaGra2PlayersActionPerformed(evt);
             }
         });
+
+        jLabelGracz1.setText("Imie gracza 1:");
+
+        jTextFieldGracz1.setText("Gracz 1");
+
+        jLabelGracz2.setText("Imie gracza 2:");
+
+        jTextFieldGracz2.setText("Gracz 2");
+
+        jLabel10.setText("Symbol gracza 1:");
+
+        buttonGroup2.add(jRadioButtonKolko2p);
+        jRadioButtonKolko2p.setSelected(true);
+        jRadioButtonKolko2p.setText("Kółko");
+        jRadioButtonKolko2p.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonKolko2pActionPerformed(evt);
+            }
+        });
+
+        buttonGroup2.add(jRadioButtonKrzyzyk2p);
+        jRadioButtonKrzyzyk2p.setText("Krzyżyk");
+        jRadioButtonKrzyzyk2p.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonKrzyzyk2pActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Symbol gracza 2:");
+
+        jLabelSymbol2P.setText("Krzyżyk");
+
+        javax.swing.GroupLayout jPanel2PlayersLayout = new javax.swing.GroupLayout(jPanel2Players);
+        jPanel2Players.setLayout(jPanel2PlayersLayout);
+        jPanel2PlayersLayout.setHorizontalGroup(
+            jPanel2PlayersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2PlayersLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2PlayersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonNowaGra2Players)
+                    .addGroup(jPanel2PlayersLayout.createSequentialGroup()
+                        .addGroup(jPanel2PlayersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabelGracz1)
+                            .addComponent(jLabelGracz2)
+                            .addComponent(jLabel11))
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel2PlayersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldGracz1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldGracz2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2PlayersLayout.createSequentialGroup()
+                                .addComponent(jRadioButtonKolko2p)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jRadioButtonKrzyzyk2p))
+                            .addComponent(jLabelSymbol2P))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2PlayersLayout.setVerticalGroup(
+            jPanel2PlayersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2PlayersLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2PlayersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelGracz1)
+                    .addComponent(jTextFieldGracz1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2PlayersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelGracz2)
+                    .addComponent(jTextFieldGracz2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2PlayersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jRadioButtonKolko2p)
+                    .addComponent(jRadioButtonKrzyzyk2p))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2PlayersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabelSymbol2P))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(buttonNowaGra2Players)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("2 Graczy", jPanel2Players);
+
+        buttonNowaGraAI.setText("Nowa gra");
+        buttonNowaGraAI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonNowaGraAIActionPerformed(evt);
+            }
+        });
+
+        jLabelGraczAI.setText("Imie gracza 1:");
+
+        jTextFieldGraczAI.setText("Gracz 1");
+
+        jLabel13.setText("Symbol gracza 1:");
+
+        buttonGroup1.add(jRadioButtonKolkoAI);
+        jRadioButtonKolkoAI.setSelected(true);
+        jRadioButtonKolkoAI.setText("Kółko");
+        jRadioButtonKolkoAI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonKolkoAIActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(jRadioButtonKrzyzykAI);
+        jRadioButtonKrzyzykAI.setText("Krzyżyk");
+        jRadioButtonKrzyzykAI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonKrzyzykAIActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setText("Symbol gracza AI:");
+
+        jLabelSymbolAI.setText("Krzyżyk");
+
+        javax.swing.GroupLayout jPanelAILayout = new javax.swing.GroupLayout(jPanelAI);
+        jPanelAI.setLayout(jPanelAILayout);
+        jPanelAILayout.setHorizontalGroup(
+            jPanelAILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAILayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelAILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonNowaGraAI)
+                    .addGroup(jPanelAILayout.createSequentialGroup()
+                        .addGroup(jPanelAILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabelGraczAI)
+                            .addComponent(jLabel14))
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanelAILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldGraczAI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelAILayout.createSequentialGroup()
+                                .addComponent(jRadioButtonKolkoAI)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jRadioButtonKrzyzykAI))
+                            .addComponent(jLabelSymbolAI))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelAILayout.setVerticalGroup(
+            jPanelAILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAILayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelAILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelGraczAI)
+                    .addComponent(jTextFieldGraczAI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelAILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jRadioButtonKolkoAI)
+                    .addComponent(jRadioButtonKrzyzykAI))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelAILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabelSymbolAI))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(buttonNowaGraAI)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Z komputerem", jPanelAI);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonNowaGra)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonNowaGra)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(129, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonNowaGraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNowaGraActionPerformed
-        this.gra = new Gra();
-        
-        odswiezUI();
-    }//GEN-LAST:event_buttonNowaGraActionPerformed
+    private void buttonNowaGra2PlayersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNowaGra2PlayersActionPerformed
 
+        String imieGracza1 = jTextFieldGracz1.getText();
+        String imieGracza2 = jTextFieldGracz2.getText();
+        int symbolGracza1 = 1;
+        int symbolGracza2 = 2;
+        
+        if (jRadioButtonKolko2p.isSelected()) {
+            symbolGracza1 = 2;
+            symbolGracza2 = 1;
+        }
+        else {
+            symbolGracza1 = 1;
+            symbolGracza2 = 2;
+        }
+        
+        gra = new Gra(imieGracza1, imieGracza2, symbolGracza1, symbolGracza2);
+                odswiezUI();
+    }//GEN-LAST:event_buttonNowaGra2PlayersActionPerformed
+
+    private void jRadioButtonKolko2pActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonKolko2pActionPerformed
+        handlerZmianySymbolu(2, jLabelSymbol2P);
+    }//GEN-LAST:event_jRadioButtonKolko2pActionPerformed
+
+    private void jRadioButtonKolkoAIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonKolkoAIActionPerformed
+        handlerZmianySymbolu(2, jLabelSymbolAI);
+    }//GEN-LAST:event_jRadioButtonKolkoAIActionPerformed
+
+    private void buttonNowaGraAIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNowaGraAIActionPerformed
+       String imieGracza1 = jTextFieldGraczAI.getText();
+        int symbolGracza1 = 1;
+        int symbolGracza2 = 2;
+        
+        if (jRadioButtonKolkoAI.isSelected()) {
+            symbolGracza1 = 2;
+            symbolGracza2 = 1;
+        }
+        else {
+            symbolGracza1 = 1;
+            symbolGracza2 = 2;
+        }
+        
+        gra = new Gra(imieGracza1, symbolGracza1, symbolGracza2);
+        odswiezUI();
+    }//GEN-LAST:event_buttonNowaGraAIActionPerformed
+
+    private void jRadioButtonKrzyzykAIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonKrzyzykAIActionPerformed
+        handlerZmianySymbolu(1, jLabelSymbolAI);
+    }//GEN-LAST:event_jRadioButtonKrzyzykAIActionPerformed
+
+    private void jRadioButtonKrzyzyk2pActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonKrzyzyk2pActionPerformed
+        handlerZmianySymbolu(1, jLabelSymbol2P);
+    }//GEN-LAST:event_jRadioButtonKrzyzyk2pActionPerformed
+
+    private void handlerZmianySymbolu(int znak, final javax.swing.JLabel labelSymbol){
+        if(znak == 1) 
+            labelSymbol.setText(this.symbol2);
+        else if(znak == 2)
+            labelSymbol.setText(this.symbol1);
+    }
+            
     private void managerPrzycisku(final javax.swing.JLabel przycisk, final int wiersz, final int kolumna) {
         przycisk.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
-                        gra.ruch(wiersz, kolumna);
-                        System.out.print("managerPrzycisku");
-                        odswiezUI();
+                        if(gra != null) {
+                            gra.ruch(wiersz, kolumna);
+                            odswiezUI();
+                        }
                     }
                 });
     }
@@ -188,7 +431,7 @@ public class Okno extends javax.swing.JFrame {
         }
         
         if(!gra.czyAktywna()) {
-            JOptionPane.showMessageDialog(rootPane, "Koniec");
+            JOptionPane.showMessageDialog(rootPane, gra.getWiadomosc());
         }
     }
     
@@ -228,8 +471,15 @@ public class Okno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonNowaGra;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JButton buttonNowaGra2Players;
+    private javax.swing.JButton buttonNowaGraAI;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -238,6 +488,21 @@ public class Okno extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelGracz1;
+    private javax.swing.JLabel jLabelGracz2;
+    private javax.swing.JLabel jLabelGraczAI;
+    private javax.swing.JLabel jLabelSymbol2P;
+    private javax.swing.JLabel jLabelSymbolAI;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2Players;
+    private javax.swing.JPanel jPanelAI;
+    private javax.swing.JRadioButton jRadioButtonKolko2p;
+    private javax.swing.JRadioButton jRadioButtonKolkoAI;
+    private javax.swing.JRadioButton jRadioButtonKrzyzyk2p;
+    private javax.swing.JRadioButton jRadioButtonKrzyzykAI;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextFieldGracz1;
+    private javax.swing.JTextField jTextFieldGracz2;
+    private javax.swing.JTextField jTextFieldGraczAI;
     // End of variables declaration//GEN-END:variables
 }
