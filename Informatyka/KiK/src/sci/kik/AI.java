@@ -7,6 +7,7 @@ package sci.kik;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -42,14 +43,14 @@ public class AI extends Gracz {
         ruch[1] = -1;
 
         for (int i = 0; i < 8; i++) {
-            ArrayList<Integer> wartosci = new ArrayList<Integer>();
+            ArrayList<Integer> wartosci = new ArrayList<>();
             wartosci.add(plansza[liniePlanszy.get(i).get(0).get(0)][liniePlanszy.get(i).get(0).get(1)]);
             wartosci.add(plansza[liniePlanszy.get(i).get(1).get(0)][liniePlanszy.get(i).get(1).get(1)]);
             wartosci.add(plansza[liniePlanszy.get(i).get(2).get(0)][liniePlanszy.get(i).get(2).get(1)]);
 
             Collections.sort(wartosci);
 
-            if (wartosci.get(0) == 0 && wartosci.get(1) == wartosci.get(2)) {
+            if (wartosci.get(0) == 0 && Objects.equals(wartosci.get(1), wartosci.get(2))) {
                 if (wartosci.get(1) == super.getFigura()) {
                     for (int j = 0; j < 3; j++) {
                         if (plansza[liniePlanszy.get(i).get(j).get(0)][liniePlanszy.get(i).get(j).get(1)] == 0) {
@@ -71,14 +72,14 @@ public class AI extends Gracz {
         ruch[1] = -1;
 
         for (int i = 0; i < 8; i++) {
-            ArrayList<Integer> wartosci = new ArrayList<Integer>();
+            ArrayList<Integer> wartosci = new ArrayList<>();
             wartosci.add(plansza[liniePlanszy.get(i).get(0).get(0)][liniePlanszy.get(i).get(0).get(1)]);
             wartosci.add(plansza[liniePlanszy.get(i).get(1).get(0)][liniePlanszy.get(i).get(1).get(1)]);
             wartosci.add(plansza[liniePlanszy.get(i).get(2).get(0)][liniePlanszy.get(i).get(2).get(1)]);
 
             Collections.sort(wartosci);
 
-            if (wartosci.get(0) == 0 && wartosci.get(1) == wartosci.get(2)) {
+            if (wartosci.get(0) == 0 && Objects.equals(wartosci.get(1), wartosci.get(2))) {
                 if (wartosci.get(1) != super.getFigura() && wartosci.get(1) != 0) {
                     for (int j = 0; j < 3; j++) {
                         if (plansza[liniePlanszy.get(i).get(j).get(0)][liniePlanszy.get(i).get(j).get(1)] == 0) {
@@ -96,12 +97,12 @@ public class AI extends Gracz {
 
     private int[] losujRuch() {
         int[] ruch = new int[2];
-        ArrayList<ArrayList<Integer>> wolne = new ArrayList<ArrayList<Integer>>();
+        ArrayList<ArrayList<Integer>> wolne = new ArrayList<>();
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (plansza[i][j] == 0) {
-                    ArrayList wolne_wspolrzedne = new ArrayList<Integer>();
+                    ArrayList wolne_wspolrzedne = new ArrayList<>();
                     wolne_wspolrzedne.add(i);
                     wolne_wspolrzedne.add(j);
                     wolne.add(wolne_wspolrzedne);

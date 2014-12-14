@@ -409,13 +409,13 @@ public class Okno extends javax.swing.JFrame {
                 znakNaPozycji = gra.getZnakNaPozycji(i, j);
                 if (znakNaPozycji == 0) {
                     plansza[i][j].setText(gra.znak0);
-                    plansza[i][j].setBorder(loweredBevel);
+                    plansza[i][j].setBorder(raisedBevel);
                 } else if (znakNaPozycji == 1) {
                     plansza[i][j].setText(gra.znak1);
-                    plansza[i][j].setBorder(raisedBevel);
+                    plansza[i][j].setBorder(loweredBevel);
                 } else if (znakNaPozycji == 2) {
                     plansza[i][j].setText(gra.znak2);
-                    plansza[i][j].setBorder(raisedBevel);
+                    plansza[i][j].setBorder(loweredBevel);
                 }
             }
         }
@@ -454,6 +454,7 @@ public class Okno extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Okno().setVisible(true);
             }

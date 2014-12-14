@@ -6,6 +6,8 @@
 package sci.kik;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Objects;
 
 /**
  *
@@ -102,39 +104,35 @@ public class Gra {
     }
 
     private boolean sprawdzStan() {
+        for (int i = 0; i < 8; i++) {
+            ArrayList<Integer> wartosci = new ArrayList<>();
+            for (int j = 0; j < 3; j++) {
+                wartosci.add(plansza[liniePlanszy.get(i).get(j).get(0)][liniePlanszy.get(i).get(j).get(1)]);
+            }
+
+            Collections.sort(wartosci);
+
+            if (Objects.equals(wartosci.get(0), wartosci.get(2)) && wartosci.get(0) != 0) {
+                czyAktywna = false;
+                sprawdzKtoWygral(wartosci.get(0));
+                return false;
+            }
+        }
+
         int suma = 0;
         for (int i = 0; i < 3; i++) {
-            if ((plansza[i][0] == plansza[i][1]) && (plansza[i][0] == plansza[i][2]) && (plansza[i][1] == plansza[i][2]) && (plansza[i][0] != 0)) {
-                czyAktywna = false;
-                sprawdzKtoWygral(plansza[i][0]);
-                return false;
-            }
-            if ((plansza[0][i] == plansza[1][i]) && (plansza[0][i] == plansza[2][i]) && (plansza[1][i] == plansza[2][i]) && (plansza[0][i] != 0)) {
-                czyAktywna = false;
-                sprawdzKtoWygral(plansza[0][i]);
-                return false;
-            }
-            if ((plansza[0][0] == plansza[1][1]) && (plansza[0][0] == plansza[2][2]) && (plansza[1][1] == plansza[2][2]) && (plansza[1][1] != 0)) {
-                czyAktywna = false;
-                sprawdzKtoWygral(plansza[0][0]);
-                return false;
-            }
-            if ((plansza[0][2] == plansza[1][1]) && (plansza[0][2] == plansza[2][0]) && (plansza[1][1] == plansza[2][0]) && (plansza[1][1] != 0)) {
-                sprawdzKtoWygral(plansza[0][2]);
-                czyAktywna = false;
-                return false;
-            }
             for (int j = 0; j < 3; j++) {
                 if (plansza[i][j] > 0) {
                     suma++;
                 }
             }
 
-            if (suma >= 9) {
-                czyAktywna = false;
-                sprawdzKtoWygral(0);
-                return false;
-            }
+        }
+
+        if (suma >= 9) {
+            czyAktywna = false;
+            sprawdzKtoWygral(0);
+            return false;
         }
         return true;
     }
@@ -228,11 +226,11 @@ public class Gra {
         linieNaPlanszy[7][1] = 4;
         linieNaPlanszy[7][2] = 8;
 
-        liniePlanszy = new ArrayList<ArrayList<ArrayList<Integer>>>();
+        liniePlanszy = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
-            ArrayList<ArrayList<Integer>> linia = new ArrayList<ArrayList<Integer>>();
+            ArrayList<ArrayList<Integer>> linia = new ArrayList<>();
             for (int j = 0; j < 3; j++) {
-                ArrayList linia_wspolrzedne = new ArrayList<Integer>();
+                ArrayList linia_wspolrzedne = new ArrayList<>();
                 linia_wspolrzedne.add(planszaDoRuchow[linieNaPlanszy[i][j]][0]);
                 linia_wspolrzedne.add(planszaDoRuchow[linieNaPlanszy[i][j]][1]);
                 linia.add(linia_wspolrzedne);
