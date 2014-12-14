@@ -1,6 +1,7 @@
-﻿# Kółko i krzyżyk
-__Autor: Karol Działowski__
-__Zadanie: (Zadanie 4)[https://onedrive.live.com/?cid=8729e46e64549db3&id=8729E46E64549DB3%21427&ithint=folder,&authkey=!AF83fA0MsejZzrQ]
+# Kółko i krzyżyk
+__Autor__: Karol Działowski
+
+__Zadanie__: [Zadanie 4](https://onedrive.live.com/?cid=8729e46e64549db3&id=8729E46E64549DB3%21427&ithint=folder,&authkey=!AF83fA0MsejZzrQ)
 
 ## Spełnione założenia
 ### Na ocenę 4
@@ -11,8 +12,6 @@ __Zadanie: (Zadanie 4)[https://onedrive.live.com/?cid=8729e46e64549db3&id=8729E4
 5. Gra kończy się, kiedy w jednym wierszu, kolumnie lub na przekątnej znajdą się trzy takie same symbole albo kiedy nie będzie pustych pól na planszy.
 6. Po zakończeniu gry wyświetlany jest komunikat w standardowym oknie dialogowym z informacją o tym, kto wygrał grę lub o grze nierozstrzygniętej.
 7. Po zakończeniu gry program nie reaguje na klikanie na pola planszy (niezależnie od tego, czy są one puste czy zapełnione).
-
-__7/7__
 
 ### Na ocenę 5
 1. Gra zawiera przycisk do rozpoczęcia nowej gry – żeby nie trzeba było ponownie uruchamiać programu po zakończeniu pierwszej gry.
@@ -35,3 +34,11 @@ Tutaj nie wiedziałem jak to zaimplementować. W zadaniu nie jest napisane kto m
             ruchAI();
         }
 ```
+
+### Na ocenę 6
+1. Program umożliwia wybór przez gracza gry z komputerem lub z innym graczem.
+2. Program umożliwia grę z komputerem, w której komputer wybiera ruchy na podstawie sensownego algorytmu zmierzającego do zwycięstwa (nie losowo). Nie musi to być algorytm najskuteczniejszy z możliwych. Wystarczy, że:
+	* jeśli w wierszu, kolumnie lub na przekątnej są dwa pola oznaczone symbolem używanym przez komputera, to komputer wybierze zagranie na to wolne pole w celu zwycięstwa.
+	* jeśli w wierszu, kolumnie lub na przekątnej są dwa pola oznaczone symbolem używanym przez zawodnika, to komputer wybierze zagranie na to wolne pole, w celu obrony przed zwycięstwem zawodnika.
+c. pozostałe zagrania mogą być losowe.
+3. Przed rozpoczęciem gry gracz może wprowadzić imiona/nazwy graczy, które są używane przy wyświetlaniu informacji o zwycięzcy gry – zamiast standardowych napisów typu „Wygrał zawodnik 1.” -> „Wygrał Michał.”
