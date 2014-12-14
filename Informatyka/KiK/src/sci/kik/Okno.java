@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package sci.kik;
 
 import java.awt.event.MouseAdapter;
@@ -20,16 +19,16 @@ public class Okno extends javax.swing.JFrame {
 
     private Gra gra;
     private javax.swing.JLabel[][] plansza;
-    
+
     final private String symbol1 = "Kółko";
     final private String symbol2 = "Krzyżyk";
-    
+
     /**
      * Creates new form NewJFrame
      */
     public Okno() {
         initComponents();
-        
+
         plansza = new javax.swing.JLabel[3][3];
         plansza[0][0] = jLabel1;
         plansza[0][1] = jLabel2;
@@ -40,9 +39,9 @@ public class Okno extends javax.swing.JFrame {
         plansza[2][0] = jLabel7;
         plansza[2][1] = jLabel8;
         plansza[2][2] = jLabel9;
-        
-        for(int i=0; i<3; i++) {
-            for(int j=0; j<3; j++) {
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
                 managerPrzycisku(plansza[i][j], i, j);
             }
         }
@@ -333,18 +332,17 @@ public class Okno extends javax.swing.JFrame {
         String imieGracza2 = jTextFieldGracz2.getText();
         int symbolGracza1 = 1;
         int symbolGracza2 = 2;
-        
+
         if (jRadioButtonKolko2p.isSelected()) {
             symbolGracza1 = 1;
             symbolGracza2 = 2;
-        }
-        else {
+        } else {
             symbolGracza1 = 2;
             symbolGracza2 = 1;
         }
-        
+
         gra = new Gra(imieGracza1, imieGracza2, symbolGracza1, symbolGracza2);
-                odswiezUI();
+        odswiezUI();
     }//GEN-LAST:event_buttonNowaGra2PlayersActionPerformed
 
     private void jRadioButtonKolko2pActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonKolko2pActionPerformed
@@ -356,19 +354,18 @@ public class Okno extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonKolkoAIActionPerformed
 
     private void buttonNowaGraAIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNowaGraAIActionPerformed
-       String imieGracza1 = jTextFieldGraczAI.getText();
+        String imieGracza1 = jTextFieldGraczAI.getText();
         int symbolGracza1 = 1;
         int symbolGracza2 = 2;
-        
+
         if (jRadioButtonKolkoAI.isSelected()) {
             symbolGracza1 = 1;
             symbolGracza2 = 2;
-        }
-        else {
+        } else {
             symbolGracza1 = 2;
             symbolGracza2 = 1;
         }
-        
+
         gra = new Gra(imieGracza1, symbolGracza1, symbolGracza2);
         odswiezUI();
     }//GEN-LAST:event_buttonNowaGraAIActionPerformed
@@ -381,54 +378,53 @@ public class Okno extends javax.swing.JFrame {
         handlerZmianySymbolu(2, jLabelSymbol2P);
     }//GEN-LAST:event_jRadioButtonKrzyzyk2pActionPerformed
 
-    private void handlerZmianySymbolu(int znak, final javax.swing.JLabel labelSymbol){
-        if(znak == 1) 
+    private void handlerZmianySymbolu(int znak, final javax.swing.JLabel labelSymbol) {
+        if (znak == 1) {
             labelSymbol.setText(this.symbol2);
-        else if(znak == 2)
+        } else if (znak == 2) {
             labelSymbol.setText(this.symbol1);
+        }
     }
-            
+
     private void managerPrzycisku(final javax.swing.JLabel przycisk, final int wiersz, final int kolumna) {
         przycisk.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        if(gra != null) {
-                            gra.ruch(wiersz, kolumna);
-                            odswiezUI();
-                        }
-                    }
-                });
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (gra != null) {
+                    gra.ruch(wiersz, kolumna);
+                    odswiezUI();
+                }
+            }
+        });
     }
-    
+
     private void odswiezUI() {
         int znakNaPozycji;
         Border loweredBevel, raisedBevel;
         loweredBevel = BorderFactory.createLoweredBevelBorder();
         raisedBevel = BorderFactory.createRaisedBevelBorder();
-        
-        for (int i=0; i<3; i++) {
-            for (int j=0; j<3; j++) {
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
                 znakNaPozycji = gra.getZnakNaPozycji(i, j);
                 if (znakNaPozycji == 0) {
                     plansza[i][j].setText(gra.znak0);
                     plansza[i][j].setBorder(loweredBevel);
-                } 
-                else if(znakNaPozycji == 1) {
+                } else if (znakNaPozycji == 1) {
                     plansza[i][j].setText(gra.znak1);
                     plansza[i][j].setBorder(raisedBevel);
-                }
-                else if(znakNaPozycji == 2) {
+                } else if (znakNaPozycji == 2) {
                     plansza[i][j].setText(gra.znak2);
                     plansza[i][j].setBorder(raisedBevel);
-                }               
+                }
             }
         }
-        
-        if(!gra.czyAktywna()) {
+
+        if (!gra.czyAktywna()) {
             JOptionPane.showMessageDialog(rootPane, gra.getWiadomosc());
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */
