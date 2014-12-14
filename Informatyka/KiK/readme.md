@@ -3,6 +3,10 @@ __Autor__: Karol Działowski
 
 __Zadanie__: [Zadanie 4](https://onedrive.live.com/?cid=8729e46e64549db3&id=8729E46E64549DB3%21427&ithint=folder,&authkey=!AF83fA0MsejZzrQ)
 
+## :^)
+
+![:^)](http://i.imgur.com/eVb6XIx.png)
+
 ## Spełnione założenia
 ### Na ocenę 4
 1. Po uruchomieniu programu rozpoczyna się nowa gra z pustą planszą
