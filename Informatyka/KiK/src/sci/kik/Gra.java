@@ -25,8 +25,8 @@ public class Gra {
     private boolean czyAktywna = false; // czy gra jest aktywna
 
     final public String znak0 = " ";
-    final public String znak1 = "X";
-    final public String znak2 = "O";
+    final public String znak1 = "O";
+    final public String znak2 = "X";
 
     public Gra(String imieGracza1, String imieGracza2, int symbolGracza1, int symbolGracza2) {
         this.plansza = new int[3][3];
@@ -60,6 +60,9 @@ public class Gra {
         czyAktywna = true;
         this.graZAI = true;
         
+        if(graczAI.getFigura() == 1) {
+           ruchAI();
+        }
         System.out.println("Nowa gra");
     }
 
@@ -67,8 +70,8 @@ public class Gra {
         if (czyAktywna && plansza[wiersz][kolumna] == 0) {
             if (this.plansza[wiersz][kolumna] == 0) {
                 if (ostatniRuch == 0) {
-                    this.plansza[wiersz][kolumna] = gracz1.getFigura();
-                    ostatniRuch = gracz1.getFigura();
+                    this.plansza[wiersz][kolumna] = 1;
+                    ostatniRuch = 1;
                 } else if (ostatniRuch == 2) {
                     this.plansza[wiersz][kolumna] = 1;
                     ostatniRuch = 1;
@@ -80,16 +83,19 @@ public class Gra {
             sprawdzStan();
             
             if(czyAktywna && graZAI) {
-                int[] ruchAI = graczAI.ruch(plansza);
-                int x = ruchAI[0];
-                int y = ruchAI[1];
-                plansza[x][y] = graczAI.getFigura();
-                ostatniRuch = graczAI.getFigura();
-                sprawdzStan();
+                ruchAI();
             }
         }
     }
 
+    private void ruchAI() {
+        int[] ruchAI = graczAI.ruch(plansza);
+        int x = ruchAI[0];
+        int y = ruchAI[1];
+        plansza[x][y] = graczAI.getFigura();
+        ostatniRuch = graczAI.getFigura();
+        sprawdzStan();
+    }
     private boolean sprawdzStan() {
         int suma = 0;
         for (int i = 0; i < 3; i++) {

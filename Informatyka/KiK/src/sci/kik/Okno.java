@@ -21,8 +21,8 @@ public class Okno extends javax.swing.JFrame {
     private Gra gra;
     private javax.swing.JLabel[][] plansza;
     
-    final private String symbol1 = "Krzyżyk";
-    final private String symbol2 = "Kółko";
+    final private String symbol1 = "Kółko";
+    final private String symbol2 = "Krzyżyk";
     
     /**
      * Creates new form NewJFrame
@@ -99,47 +99,38 @@ public class Okno extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setToolTipText("");
         jPanel1.add(jLabel1);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setToolTipText("");
         jPanel1.add(jLabel2);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setToolTipText("");
         jPanel1.add(jLabel3);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setToolTipText("");
         jPanel1.add(jLabel4);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setToolTipText("");
         jPanel1.add(jLabel5);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setToolTipText("");
         jPanel1.add(jLabel6);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setToolTipText("");
         jPanel1.add(jLabel7);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setToolTipText("");
         jPanel1.add(jLabel8);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setToolTipText("");
         jPanel1.add(jLabel9);
 
         buttonNowaGra2Players.setText("Nowa gra");
@@ -344,12 +335,12 @@ public class Okno extends javax.swing.JFrame {
         int symbolGracza2 = 2;
         
         if (jRadioButtonKolko2p.isSelected()) {
-            symbolGracza1 = 2;
-            symbolGracza2 = 1;
-        }
-        else {
             symbolGracza1 = 1;
             symbolGracza2 = 2;
+        }
+        else {
+            symbolGracza1 = 2;
+            symbolGracza2 = 1;
         }
         
         gra = new Gra(imieGracza1, imieGracza2, symbolGracza1, symbolGracza2);
@@ -357,11 +348,11 @@ public class Okno extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonNowaGra2PlayersActionPerformed
 
     private void jRadioButtonKolko2pActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonKolko2pActionPerformed
-        handlerZmianySymbolu(2, jLabelSymbol2P);
+        handlerZmianySymbolu(1, jLabelSymbol2P);
     }//GEN-LAST:event_jRadioButtonKolko2pActionPerformed
 
     private void jRadioButtonKolkoAIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonKolkoAIActionPerformed
-        handlerZmianySymbolu(2, jLabelSymbolAI);
+        handlerZmianySymbolu(1, jLabelSymbolAI);
     }//GEN-LAST:event_jRadioButtonKolkoAIActionPerformed
 
     private void buttonNowaGraAIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNowaGraAIActionPerformed
@@ -370,12 +361,12 @@ public class Okno extends javax.swing.JFrame {
         int symbolGracza2 = 2;
         
         if (jRadioButtonKolkoAI.isSelected()) {
-            symbolGracza1 = 2;
-            symbolGracza2 = 1;
-        }
-        else {
             symbolGracza1 = 1;
             symbolGracza2 = 2;
+        }
+        else {
+            symbolGracza1 = 2;
+            symbolGracza2 = 1;
         }
         
         gra = new Gra(imieGracza1, symbolGracza1, symbolGracza2);
@@ -383,11 +374,11 @@ public class Okno extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonNowaGraAIActionPerformed
 
     private void jRadioButtonKrzyzykAIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonKrzyzykAIActionPerformed
-        handlerZmianySymbolu(1, jLabelSymbolAI);
+        handlerZmianySymbolu(2, jLabelSymbolAI);
     }//GEN-LAST:event_jRadioButtonKrzyzykAIActionPerformed
 
     private void jRadioButtonKrzyzyk2pActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonKrzyzyk2pActionPerformed
-        handlerZmianySymbolu(1, jLabelSymbol2P);
+        handlerZmianySymbolu(2, jLabelSymbol2P);
     }//GEN-LAST:event_jRadioButtonKrzyzyk2pActionPerformed
 
     private void handlerZmianySymbolu(int znak, final javax.swing.JLabel labelSymbol){
@@ -413,6 +404,7 @@ public class Okno extends javax.swing.JFrame {
         int znakNaPozycji;
         Border loweredBevel, raisedBevel;
         loweredBevel = BorderFactory.createLoweredBevelBorder();
+        raisedBevel = BorderFactory.createRaisedBevelBorder();
         
         for (int i=0; i<3; i++) {
             for (int j=0; j<3; j++) {
@@ -423,9 +415,11 @@ public class Okno extends javax.swing.JFrame {
                 } 
                 else if(znakNaPozycji == 1) {
                     plansza[i][j].setText(gra.znak1);
+                    plansza[i][j].setBorder(raisedBevel);
                 }
                 else if(znakNaPozycji == 2) {
                     plansza[i][j].setText(gra.znak2);
+                    plansza[i][j].setBorder(raisedBevel);
                 }               
             }
         }
