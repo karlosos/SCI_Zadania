@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+    <item android:id="@+id/pogoda" android:title="Pogoda"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/nowe_okno" android:title="Nowe okno"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/google" android:title="Google"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/galeria" android:title="Galeria"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/kalendarz" android:title="Kalendarz"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/zadzwon" android:title="Zadzwoń"
+        android:orderInCategory="100" app:showAsAction="never" />
+</menu>
