@@ -30,9 +30,6 @@ public class MainActivity extends ActionBarActivity {
         wyslij = (Button) findViewById(R.id.button);
         liczba_komentarzy = (Button) findViewById(R.id.button);
 
-        name = (EditText) findViewById(R.id.editText);
-        email = (EditText) findViewById(R.id.editText2);
-        comment = (EditText) findViewById(R.id.editText3);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -76,12 +73,68 @@ public class MainActivity extends ActionBarActivity {
 
     public void dodajKomentarz(View v) {
 
+        name = (EditText) findViewById(R.id.editText);
+        email = (EditText) findViewById(R.id.editText2);
+        comment = (EditText) findViewById(R.id.editText3);
+
         String name_s = name.getText().toString();
         String email_s = email.getText().toString();
         String comment_s = comment.getText().toString();
 
         baza.execSQL("INSERT INTO Persons Values('"+name_s+"', '"+email_s+"','"+comment_s+"');");
-        Toast toast = Toast.makeText(getApplicationContext(), "\"INSERT INTO Persons Values('\"+name_s+\"', '\"+email_s+\"','\"+comment_s+\"');\"", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext(), "Dodano komentarz", Toast.LENGTH_SHORT);
         toast.show();
+    }
+
+    public void zliczKomentarze(View v) {
+        int liczbaKomentarzy = 0;
+        Cursor cursor = baza.rawQuery("SELECT COUNT(*) FROM Persons",null);
+        if(cursor.moveToFirst()){
+            do{
+                liczbaKomentarzy = cursor.getInt(cursor.getInt(0));
+            }while(cursor.moveToNext());
+            cursor.close();
+        }
+        Toast toast = Toast.makeText(getApplicationContext(), Integer.toString(liczbaKomentarzy), Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    public void zliczKomentarzeZa(View v) {
+        int liczbaKomentarzy = 0;
+        Cursor cursor = baza.rawQuery("SELECT * FROM Persons WHERE Email like 'a@wp.pl'",null);
+        if(cursor.moveToFirst()){
+            do{
+                liczbaKomentarzy = cursor.getInt(cursor.getCount());
+            }while(cursor.moveToNext());
+            cursor.close();
+        }
+        Toast toast = Toast.makeText(getApplicationContext(), Integer.toString(liczbaKomentarzy), Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    public void dlugieKomentarze(View v) {
+        String komentarz;
+        Cursor cursor = baza.rawQuery("SELECT * FROM Persons WHERE CHAR_LENGTH(Comment) > 100",null);
+        if(cursor.moveToFirst()){
+            do{
+                komentarz = cursor.getString(cursor.getColumnIndex("Comment"));
+                Toast toast = Toast.makeText(getApplicationContext(), komentarz, Toast.LENGTH_SHORT);
+                toast.show();
+            }while(cursor.moveToNext());
+            cursor.close();
+        }
+    }
+
+    public void ktoNajwiecej(View v) {
+        String komentarz;
+        Cursor cursor = baza.rawQuery("SELECT FirstName FROM Persons GROUP by FirstName",null);
+        if(cursor.moveToFirst()){
+            do{
+                komentarz = cursor.getString(cursor.getInt(1));
+                Toast toast = Toast.makeText(getApplicationContext(), komentarz, Toast.LENGTH_SHORT);
+                toast.show();
+            }while(cursor.moveToNext());
+            cursor.close();
+        }
     }
 }

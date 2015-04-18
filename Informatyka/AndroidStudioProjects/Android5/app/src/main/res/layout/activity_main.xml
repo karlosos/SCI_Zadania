@@ -40,7 +40,8 @@
         android:id="@+id/button"
         android:layout_below="@+id/editText3"
         android:layout_alignParentStart="true"
-        android:onClick="dodajKomentarz" />
+        android:onClick="dodajKomentarz"
+        android:nestedScrollingEnabled="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -48,7 +49,8 @@
         android:text="Liczba dodanych komentarzy"
         android:id="@+id/button2"
         android:layout_below="@+id/button"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="zliczKomentarze" />
 
     <Button
         android:layout_width="wrap_content"
@@ -56,7 +58,8 @@
         android:text="Wyswietl dlugie"
         android:id="@+id/button3"
         android:layout_below="@+id/button2"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="dlugieKomentarze" />
 
     <Button
         android:layout_width="wrap_content"
@@ -64,7 +67,8 @@
         android:text="Policz liczbe od a@wp.pl"
         android:id="@+id/button4"
         android:layout_below="@+id/button3"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="zliczKomentarzeZa" />
 
     <Button
         android:layout_width="wrap_content"
@@ -72,7 +76,8 @@
         android:text="Kto dodal najwiecej"
         android:id="@+id/button5"
         android:layout_below="@+id/button4"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="ktoNajwiecej" />
 
     <Button
         android:layout_width="wrap_content"
