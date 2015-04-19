@@ -1,9 +1,14 @@
 package com.example.karol.spra;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.Toast;
 
 
 public class Gallery extends ActionBarActivity {
@@ -35,5 +40,25 @@ public class Gallery extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public void gallery (View v) {
+        CheckBox memory = (CheckBox) findViewById(R.id.memory);
+        CheckBox sdcard = (CheckBox) findViewById(R.id.sdcard);
+
+        if(memory.isChecked() && sdcard.isChecked()) {
+            Toast toast = Toast.makeText(getApplicationContext(), "Musisz wybrac jedna opcje", Toast.LENGTH_SHORT);
+            toast.show();
+        } else if (!memory.isChecked() && !sdcard.isChecked()) {
+            Toast toast = Toast.makeText(getApplicationContext(), "Musisz wybrac jedna opcje", Toast.LENGTH_SHORT);
+            toast.show();
+        } else if (memory.isChecked()) {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("content://media/internal/images/media"));
+            startActivity(Intent.createChooser(intent, "Choose browser"));
+        } else if (sdcard.isChecked()) {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("content://media/internal/images/media"));
+            startActivity(Intent.createChooser(intent, "Choose browser"));
+        }
     }
 }
