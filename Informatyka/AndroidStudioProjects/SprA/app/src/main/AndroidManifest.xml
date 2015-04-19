@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Gallery"
+            android:label="@string/title_activity_gallery" >
+        </activity>
+        <activity
+            android:name=".Draw"
+            android:label="@string/title_activity_draw" >
+        </activity>
     </application>
 
 </manifest>
