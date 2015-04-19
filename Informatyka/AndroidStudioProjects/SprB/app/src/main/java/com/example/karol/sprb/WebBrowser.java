@@ -1,9 +1,14 @@
 package com.example.karol.sprb;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RadioButton;
 
 
 public class WebBrowser extends ActionBarActivity {
@@ -35,5 +40,21 @@ public class WebBrowser extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void browser (View v) {
+        RadioButton wp = (RadioButton) findViewById(R.id.radioButton);
+        RadioButton reddit = (RadioButton) findViewById(R.id.radioButton2);
+        String url = "";
+        if (wp.isChecked()) {
+            url = "http://www.wykop.pl";
+        } else if (reddit.isChecked()) {
+            url = "http://www.reddit.com";
+        } else {
+            url = "http://jestesglupi.com";
+        }
+
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(Intent.createChooser(intent, "Choose browser"));
     }
 }

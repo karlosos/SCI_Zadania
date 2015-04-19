@@ -1,10 +1,15 @@
 package com.example.karol.sprb;
 
+import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -37,12 +42,16 @@ public class MainActivity extends ActionBarActivity {
         }
 
         else if (id == R.id.gps) {
-            return true;
+            LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            Location locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            Toast toast = Toast.makeText(getApplicationContext(), locationGPS.toString(), Toast.LENGTH_SHORT);
+            toast.show();
         }
 
         else if (id == R.id.color) {
             Intent intent  = new Intent(this, Color.class);
             startActivity(intent);
+
         }
 
         return super.onOptionsItemSelected(item);
