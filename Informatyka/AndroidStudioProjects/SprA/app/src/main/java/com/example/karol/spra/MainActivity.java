@@ -30,8 +30,12 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.gallery) {
+
+        } else if (id == R.id.dialer) {
+
+        } else if (id == R.id.draw) {
+            
         }
 
         return super.onOptionsItemSelected(item);
