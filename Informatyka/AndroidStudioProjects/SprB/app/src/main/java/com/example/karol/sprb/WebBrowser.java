@@ -1,25 +1,24 @@
 package com.example.karol.sprb;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class MainActivity extends ActionBarActivity {
+public class WebBrowser extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_web_browser);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_web_browser, menu);
         return true;
     }
 
@@ -31,18 +30,8 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.web_browser) {
-            Intent intent  = new Intent(this, WebBrowser.class);
-            startActivity(intent);
-        }
-
-        else if (id == R.id.gps) {
+        if (id == R.id.action_settings) {
             return true;
-        }
-
-        else if (id == R.id.color) {
-            Intent intent  = new Intent(this, Color.class);
-            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
