@@ -1,0 +1,4 @@
+Aplikacja z menu w którym beda 3 pozycje
+1. W nowym oknie uzytkownik przy pomocy checkboxów moze wybrac czy chce przejsc do galerii na pamieci zewnetrznej czy wewnetrznej telefonu, przechodzac na wybrana poprzez nacisniecie przycisku
+2. Po wybraniu drugiej opcji zainicjowana zostanie rozmowa telefoniczna z numerem telefonu podanym w polu tekstowym w glównym oknie aplikacji.
+3. W nowym oknie znajduje sie pole tekstowe oraz 2 radiobuttony i 1 checkbox. W polu tekstowym okreslana jest grubosc linii, radiobuttony okreslaja ksztalt: okrad i kwadrat, checkbox okresla czy figura ma byc cieniowana. Wyswietl komunikat: Rysuje ?? o grubosci ?? px ?? z/bez cieniowania.
