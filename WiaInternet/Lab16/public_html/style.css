@@ -1,0 +1,85 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2015-04-22, 18:06:11
+    Author     : Karol
+*/
+
+/*   #588C7E;
+   #F2E394;
+   #F2AE72;
+   #D96459;
+   #8C4646;*/
+
+body {
+    background-color: #588C7E;
+}
+
+nav {
+    background-color: #F2E394;
+    width: 750px;
+    margin: 0 auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+li {
+    display: inline;
+    margin-right: 20px;
+}
+
+ul {
+    color: #8C4646;
+    font-size: 23px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+li:hover {
+    color: #D96459;
+}
+
+#zad1 {
+    margin: 0 auto;
+    margin-top: 50px;
+    height: 200px;
+    width: 200px;
+    background-color: #D96459;
+}
+
+#zad2 {
+    background-color: #F2AE72;
+    position: absolute;
+    right: 0px;
+    top: 95px;
+    width: 50px;
+    height: 50px;
+}
+
+#logo {
+    margin-left: 13px; 
+    color: #8C4646;
+    font-size: 35px;
+}
+
+#text {
+    font-size: 35px;
+}
+
+#zad3 {
+    width: 330px;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+.pokaz {
+    width: 100px;
+    height: 200px;
+    background-color: white;
+    margin-right: 10px;
+    float: left;
+    background-color: #D96459;
+}
