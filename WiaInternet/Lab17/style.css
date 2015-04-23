@@ -1,0 +1,36 @@
+body {
+    background-color: #E2F89C;
+}
+
+.menu li {
+    color: #D5E1A3;
+    text-align: center;
+    display: block;
+    width: 300px;
+    float: left;
+    background-color: #3F7CAC;
+
+}
+
+.submenu li{
+    display: block;
+    float: none;
+    width: 300px;
+    background-color: #95AFBA;
+}
+
+.menu li ul {
+    position: absolute;
+    margin:0;
+    padding:0;
+    float: left;
+}
+
+.submenu {
+/*    visibility: hidden;*/
+    display: none;
+}
+
+a {
+    color: #D5E1A3;
+}
