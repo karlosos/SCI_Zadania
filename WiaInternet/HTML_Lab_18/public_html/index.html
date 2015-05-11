@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <style>
+            #books li {
+                display: inline;
+                margin-right: 10px;
+            }
+        </style>
+        <script>
+            function getXMLHttpRequest()
+            {
+                var request = false;
+                try {
+                    request = new XMLHttpRequest();
+                } catch (err1) {
+                    try {
+                        request = new ActiveXObject('Msxml2.XMLHTTP');
+                    } catch (err2) {
+                        try {
+                            request = new ActiveXObject('Microsoft.XMLHTTP');
+                        } catch (err3) {
+                            request = false;
+                        }
+
+                    }
+                }
+                return request;
+            }
+
+            var r;
+            r = getXMLHttpRequest();
+            function processResponse()
+            {
+                if (r.readyState == 4) {
+                    if (r.status == 200) {
+                        $("#output").text(r.responseText);
+                        //alert('Tekst z serwera: ' + r.responseText);
+                    }
+                    ;
+                }
+                ;
+            }
+
+
+
+
+            function loadFile(file) {
+                r.open('GET', file, true);
+                r.onreadystatechange = processResponse;
+                r.send(null);
+            }
+
+            function loadFileUp(fileUp) {
+                loadFile($(fileUp).text());
+                console.log('test');
+            }
+            function loadBook(number) {
+                $.ajax({
+                    type: "GET",
+                    url: "shelf.xml",
+                    dataType: "xml",
+                    success: function (xml) {
+                        var id = 0;
+                        $(xml).find('book').each(function () {
+                            if (id == number) {
+                                var title = $(this).find('title').text();
+                                var author = $(this).find('author').text();
+                                var pages = $(this).find('pages').text();
+                                
+                                var html = 'Title:' + title + '<br>Author:' + author + '<br>Pages:' + pages;
+                          
+                                $("#output").html(html);
+                            }
+                            id++;
+                        });
+                    }});
+            }
+            $(document).ready(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "shelf.xml",
+                    dataType: "xml",
+                    success: function (xml) {
+                        var id = 0;
+                        $(xml).find('book').each(function () {
+                            var Titles = $(this).find('title').text();
+                            var html = '<span onclick=loadBook(' + id + ')>' + Titles + '</span>';
+                            $("<li></li>").html(html).appendTo("#books");
+                            id++;
+                        });
+                    }});
+            });
+
+
+        </script>
+    </head>
+    <body>
+        <button class="btn" onclick="loadFile('plik1.txt')">Plik1.txt</button>
+        <button class="btn" onclick="loadFile('plik2.txt')">Plik2.txt</button>
+        <button class="btn" onclick="loadFile('plik3.txt')">Plik3.txt</button>
+        <button class="btn" onclick="loadFile('plik4.txt')">Plik4.txt</button>
+        <button class="btn" onclick="loadFile('plik5.txt')">Plik5.txt</button>
+
+        <ul id='books'>
+        </ul>
+
+        <div id="output">
+        </div>
+        <script>
+            function loadFile(file) {
+                r.open('GET', file, true);
+                r.onreadystatechange = processResponse;
+                r.send(null);
+            }
+        </script>
+    </body>
+</html>
