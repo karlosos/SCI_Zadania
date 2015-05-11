@@ -122,6 +122,19 @@ and open the template in the editor.
                 r.onreadystatechange = processResponse;
                 r.send(null);
             }
+            
+            function sentGet() {
+                var numberX = $("#number").val();
+                $.get( "test.php", { number : numberX} )
+                    .done(function( data ) {
+                      alert( "Data Loaded: " + data );
+                    });
+            }
         </script>
+        
+        <form>
+            <input id="number" type="number" />
+        </form>
+        <button id="get" onclick="sentGet()">Send</button>
     </body>
 </html>
