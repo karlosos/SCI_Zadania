@@ -1,0 +1,119 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/kwota"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Kwota"
+        android:id="@+id/textView"
+        android:layout_alignBottom="@+id/kwota"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/data"
+        android:layout_below="@+id/kwota"
+        android:layout_alignLeft="@+id/kwota"
+        android:layout_alignStart="@+id/kwota" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Data"
+        android:id="@+id/textView2"
+        android:layout_alignBottom="@+id/data"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/opis"
+        android:layout_below="@+id/data"
+        android:layout_alignLeft="@+id/data"
+        android:layout_alignStart="@+id/data"
+        android:layout_alignRight="@+id/data"
+        android:layout_alignEnd="@+id/data" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Opis"
+        android:id="@+id/textView3"
+        android:layout_alignBottom="@+id/opis"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wyplata"
+        android:id="@+id/switch1"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/opis"
+        android:layout_alignStart="@+id/opis"
+        android:checked="false" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wyslij"
+        android:id="@+id/wyslij"
+        android:layout_below="@+id/switch1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="wyslij" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stan Konta"
+        android:id="@+id/button"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="stanKonta" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Najwieksza wplata"
+        android:id="@+id/button2"
+        android:layout_below="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="najwiekszaWplata" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Najwieksza wyplata"
+        android:id="@+id/button3"
+        android:layout_below="@+id/button2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="najwiekszaWyplata" />
+
+</RelativeLayout>
