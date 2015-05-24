@@ -1,0 +1,36 @@
+li {
+	display: inline-block;
+}
+
+#main {
+	height: 50px;
+	width: 50px;
+	background-color: red;
+}
+
+#text {
+	float: left;
+	height: 50px;
+	background-color: blue;
+	width: 0px;
+}
+
+#logo {
+	float: left;
+	height: 50px;
+	background-color: blue;
+	color: white;
+	width: 75px;
+}
+
+.div1 {
+
+}
+
+.div2 {
+
+}
+
+.div3 {
+	
+}

@@ -45,5 +45,38 @@ $(document).ready(function() {
         $("#text").stop(true).fadeOut('slow');
     })
     
+    $("#pokaz1").mouseenter(function() {
+        $(this).stop().animate({
+            height:200,
+            width:300,
+            opacity: 0.5
+            }, 1000, 'linear');
+    });
+    
+    $("#pokaz2").mouseenter(function() {
+        $(this).stop().animate({
+                opacity: 0.4,
+                marginLeft: "0.6in",
+                fontSize: "20px", 
+                borderWidth: "10px"
+            }, 1000, 'linear');
+    });
+    
+    $("#pokaz3").mouseenter(function() {
+        $(this).stop().animate({
+                width: "200px"
+            }, 1000, 'linear');
+    });
+    
+    $(".pokaz").mouseleave(function() {
+        $(this).stop().animate({
+            width:100,
+            height:200,
+            opacity: 1,
+            marginLeft: 0,
+            borderWidth: "0px",
+            fontSize: "10px"          
+            }, 1000, 'linear');
+    })
     
 });
