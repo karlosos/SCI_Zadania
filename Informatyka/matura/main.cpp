@@ -20,11 +20,13 @@ int main(void)
       //std::cout << napis << std::endl;
     }
 
-  for (int i=0; i<sizeof(imiona); i++) 
+  for (int i=0; i<imiona.size(); i++) 
     {
       std::cout << imiona[i] << std::endl;
     }
 
   file_handle.close();
     return 0;
+
+    //Napisz kod, ktory zapisze do pliku tylko te imiona ktore rozpoczynaja sie na litere S oraz wypisze na konsoli ile takich imion spelnia ten warunek
 }
