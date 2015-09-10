@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -33,12 +34,26 @@ int main(void)
 			if (pierwsza == 'S')
 			{
 				imiona_na_s.push_back(imiona[i]);
-				output_file << imiona[i] << std::endl;
 			}
 		}
 	}
 
-	std::cout << imiona_na_s.size();
+	std::sort(imiona_na_s.begin(), imiona_na_s.end());
+
+	std::vector<string>::iterator is;
+	is = unique(imiona_na_s.begin(), imiona_na_s.end());
+	imiona_na_s.resize(std::distance(imiona_na_s.begin(), is));
+
+
+
+	std::cout << "Jest " << imiona_na_s.size() << " imion na S" << std::endl;
+
+	for (int i = 0; i < imiona_na_s.size(); i++)
+	{
+		output_file << imiona_na_s[i] << std::endl;
+		std::cout << i << " " << imiona_na_s[i] << std::endl;
+	}
+
 	std::system("pause");
 	input_file.close();
 	output_file.close();
