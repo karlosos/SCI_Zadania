@@ -7,18 +7,22 @@ using namespace std;
 
 int main(void)
 {
-	std::fstream file_handle;
-	file_handle.open("names.txt", std::ios::in);
-	bool test = file_handle.good();
+	std::fstream input_file;
+	std::fstream output_file;
+
+	input_file.open("names.txt", std::ios::in);
+	output_file.open("names_s.txt", std::ios::out);
+	
+	bool test = input_file.good();
+	
 	std::string napis;
 	std::vector<std::string> imiona;
 	std::vector<std::string> imiona_na_s;
 
-	while (!file_handle.eof())
+	while (!input_file.eof())
 	{
-		std::getline(file_handle, napis);
+		std::getline(input_file, napis);
 		imiona.push_back(napis);
-		//std::cout << napis.at(0) << std::endl;
 	}
 
 	for (int i = 0; i < imiona.size(); i++)
@@ -29,14 +33,16 @@ int main(void)
 			if (pierwsza == 'S')
 			{
 				imiona_na_s.push_back(imiona[i]);
-				//std::cout << imiona[i] << std::endl;
+				output_file << imiona[i] << std::endl;
 			}
 		}
 	}
 
 	std::cout << imiona_na_s.size();
 	std::system("pause");
-	file_handle.close();
+	input_file.close();
+	output_file.close();
+
 	return 0;
 
 	//Napisz kod, ktory zapisze do pliku tylko te imiona ktore rozpoczynaja sie na litere S oraz wypisze na konsoli ile takich imion spelnia ten warunek
