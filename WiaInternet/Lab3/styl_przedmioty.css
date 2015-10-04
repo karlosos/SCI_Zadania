@@ -1,0 +1,28 @@
+table {
+	border-spacing: 0px;
+	border-collapse: collapse;
+}
+
+td {
+	border-spacing: 0px;
+	border: 2px solid #663366;
+}
+
+.header {
+	background: #3399ff;
+	text-align: center;
+}
+
+.header2 {
+	width: 60px;
+	background: #ccff99;
+}
+
+.students {
+	width: 100px;
+	background: #ffff80;
+}
+
+.blank {
+	background: #ffff80;
+}

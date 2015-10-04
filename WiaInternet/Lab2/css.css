@@ -1,0 +1,55 @@
+body{
+    background-color: #D3D3D3;
+    color: darkgray;
+    font-family: Arial;
+    font-size: 12px;
+    border: 3px solid #000000;
+    width: 442px;
+    height: 380px;
+    padding: 7px;
+    margin: 20 auto;    
+} 
+
+span{
+    background-color: yellow;
+}
+
+#miejsceidata{
+    font-family: Arial serif;
+    text-align: right;
+    margin: 16px 0px;
+    color: #000000;
+}
+
+#adres {
+    font-family: Arial serif;
+    margin: 16px 0px;
+    color: #000000;
+}
+
+#zawiadomienie {
+    font-weight: bold;
+    text-align: center;
+    margin: 16px 0px;
+    font-size: 24px;
+    color: #000000;
+}
+
+#tresc {
+    font-family: Arial serif;
+    text-align: justify;
+    margin: 16px 0px;
+    text-indent: 30px;
+    line-height: 30px;
+    color: #000000;
+}
+
+#stopka {
+    font-family: Arial serif;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 20px;
+    width: auto;
+    float: right;  
+    color: #000000;
+}
