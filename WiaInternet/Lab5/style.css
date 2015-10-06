@@ -1,0 +1,97 @@
+#container 
+{
+	margin: 0 auto;
+	width: 894px;
+}
+
+#b_yellow 
+{
+	height: 100px;
+	background-color: orange;
+	width: 70%;
+}
+
+#login_panel {
+	float: right;
+	background-color: blue;
+	width: 60%;
+	height: 255px;
+	margin-top: -257px;
+}
+
+#b_blue 
+{
+	height: 50px;
+	background-color: blue;
+	width: 100%;
+}
+
+#b_purple 
+{
+	height: 50px;
+	background-color: purple;
+	width: 100%;
+}
+
+#b_left
+{
+	width: 50%;
+	float: left;
+}
+
+#b_right
+{
+	width: 50%;
+	float: left;
+}
+
+#footer 
+{
+	margin-top: 10px;
+	height: 50px;
+	background-color: black;
+	color: white;
+	padding-top: 5px;
+	padding-left: 10px;
+}
+
+#menu li {
+	color: white;
+	display: block;
+	background-color: green;
+	margin-bottom: 1px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	
+}
+
+#menu {
+	float: left;
+	margin-top: 1px;
+	padding-left: 1px;
+	margin-bottom: 1px;
+	width: 40%
+}
+
+.newsy_border {
+	border-right: 1px solid grey;
+}
+
+.news {
+	padding-left: 5px;
+}
+
+.n_header {
+}
+
+.n_container {
+}
+
+.n_footer {
+	width: 100%;
+}
+
+.f_right {
+	float: right;
+}
