@@ -241,3 +241,29 @@ std::string RandDate(int year_min, int year_max)
 	return output;//Uwaga = jak bêdzie gotowe, to tutaj wstawiæ to co trzeba
 
 }
+
+//Funkcja zwraca iloœæ cyfr liczby ca³kowitej
+int IloscCyfrliczbyCalkowitej(int liczba)
+{
+	int ilosc_cyfr = 0;
+	while (liczba != 0)
+	{
+		ilosc_cyfr++;
+		liczba /= 10;
+	}
+
+	return ilosc_cyfr;
+}
+
+//Funkcja zwraca sumê cyfr liczby ca³kowitej
+int SumaCyfrLiczbyCalkowitej(int liczba)
+{
+	int sumaCyfr = 0;
+
+	while (liczba != 0)
+	{
+		sumaCyfr += liczba % 10;//akumulujemy sumê cyfr
+		liczba /= 10;		//dzielimy liczbê przez 10 (system dziesiêtny)
+	}
+	return sumaCyfr;
+}
