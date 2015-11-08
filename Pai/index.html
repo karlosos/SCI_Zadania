@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="main.js"></script>
+		<script src="ckeditor/ckeditor.js"></script>
+		<meta charset="utf-8"></meta>
+		<title>Ćwiczenia - obiekt documents</title>
+	</head>
+	<body>
+		<h3> Zadanie 2 </h3>
+		<button onclick="pierwszyKlik()">Wywołanie funkcji z dołączonego pliku</button>
+
+		<h3> Zadanie 3 </h3>
+		<script>
+			document.write('Tekst w JavaScript :)');
+		</script>
+
+		<h3> Zadanie 4 </h3>
+		<pre>
+			Tag ten ma za zadanie wyświetlanie znaków w stałej szerokości.
+		</pre>
+
+		<h3> Zadanie 5 </h3>
+		<script>
+			document.writeln(document.title);
+			document.writeln("<br>");
+			document.writeln(document.URL);
+			document.writeln("<br>");
+			document.writeln(document.lastModified);
+		</script>
+
+		<h3> Zadanie 6 </h3>
+		<button onclick="alert('Bardzo ważna informacja nie lubię się uczyć! :)')">ALERT!</button>
+
+		<h3> Zadanie 7 </h3>
+		<script>
+			var imie = "Karol";
+			var nazwisko = "Dzialowski";
+			var wiek = 19;
+			var napis = "Nazywasz się " + imie + " " + nazwisko + " i masz " + wiek + " lat.";
+
+			document.write(napis); 
+		</script>
+
+		<h3> Zadanie 8 </h3>
+		<button onclick="location.reload()">Przeładowanie strony</button>
+
+		<h3> Zadanie 9 </h3>
+		<button onclick="kolorowanieStrony()">Kolorowanie strony</button>
+
+		<h3> Zadanie 10 </h3>
+		<button onclick="document.close();">Zamknięcie strony</button>
+
+		<h3> Zadanie 11 </h3>
+		<form id="A">
+			<input type="number" id="a"/>x<sup>2</sup>+
+			<input type="number" id="b"/>x+
+			<input type="number" id="c"/>
+		</form>
+		<span onclick="kwadratowaForm()">Oblicz pierwiastki</span>
+		<p id="output" style=""></p>
+
+		<script src="js/kwadratowa.js"></script>
+
+		<h3> Zadanie 12 </h3>
+		<script>
+		 // Komentarz jednolinijkowy
+
+		 /*
+		 Komentarz
+		 wielowierszowy
+		  */
+		</script>
+
+		<h3> Zadanie 13 </h3>
+		<input type="text" name="miasto" value="Szczecin" id="miasto"/>
+		<button onclick="miasto()">Miasto</button>
+
+		<h3> Zadanie 14 </h3>
+		<input name="zmienna_1" id="zmienna_1" type="number"/>
+		<input name="zmienna_2" id="zmienna_2" type="number"/>
+		<input name="rozwiazanie" id="rozwiazanie"/>
+		<button onclick="dodaj()">Dodaj</button>
+
+		<h3> Zadanie 15 </h3>
+		<input name="zmienna_a" id="zmienna_a" value="5"/>
+		<input name="zmienna_b" id="zmienna_b" value="100"/>
+		<button onclick="zamien()">Zamień</button>
+
+		<h3> Zadanie 16 <h3>
+		<button onclick="window.location.href = 'http://sci.edu.pl'">sci.edu.pl</button>
+
+		<h3> Zadanie 17 </h3>
+		
+		<h3> Zadanie 18 </h3>
+		<script>
+		document.writeln("Screen Width: " + screen.width);
+		document.writeln("Screen Height: " + screen.height);
+		document.writeln("Available Screen Width: " + screen.availWidth);
+		document.writeln("Available Screen Height: " + screen.availHeight);
+		document.writeln("Screen Color Depth: " + screen.colorDepth);
+		</script>
+
+		<h3> Zadanie 19 </h3>
+		<button onclick="okienko()">Okienko</button>
+		
+		<h3> Zadanie 20 </h3>
+		<textarea name="area" id="area" rows="10" cols="80">
+		</textarea>
+
+		<script>
+			CKEDITOR.replace('area');
+		</script>
+	</body>
+</html>
